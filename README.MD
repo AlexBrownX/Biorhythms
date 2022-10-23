@@ -1,6 +1,6 @@
 # Biorhythms Android App
 ## By Alex Brown
 
-![Application Icon](./app/src/main/res/mipmap-hdpi/bio_icon_launcher.png)
+Personal project to build a biorhythms using modern Android development practises.
 
-Personal project to build a biorhythms using modern Android development practises. 
+![Application Icon](./app/src/main/res/mipmap-xxhdpi/bio_icon_launcher.png) ![Application Icon](./app/src/main/res/mipmap-xxhdpi/bio_icon_launcher_round.png)
