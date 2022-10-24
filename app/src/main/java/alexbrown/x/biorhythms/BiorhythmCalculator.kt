@@ -3,10 +3,7 @@ package alexbrown.x.biorhythms
 import java.math.BigDecimal
 import java.math.RoundingMode
 import java.time.Duration
-import java.time.LocalDate
 import java.time.LocalDateTime
-import java.time.LocalTime
-import java.time.Month
 import kotlin.math.sin
 
 class BiorhythmCalculator {
@@ -17,16 +14,7 @@ class BiorhythmCalculator {
         INTELLECTUAL(33)
     }
 
-    init {
-        val dateOfBirth = LocalDate.of(1984, Month.AUGUST, 21)
-        val timeOfBirth = LocalTime.of(4, 0)
-        val dateTimeOfBirth = LocalDateTime.of(dateOfBirth, timeOfBirth)
-
-    }
-
-
-
-    fun _calculate(dateTimeOfBirth: LocalDateTime): CalculationResults {
+    fun calculate(dateTimeOfBirth: LocalDateTime): CalculationResults {
         val daysAlive = getNumberOfDaysAlive(dateTimeOfBirth)
         val physicalScore = calculateScore(Calculation.PHYSICAL, daysAlive)
         val emotionalScore = calculateScore(Calculation.EMOTIONAL, daysAlive)
