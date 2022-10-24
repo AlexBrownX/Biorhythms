@@ -1,5 +1,7 @@
 package alexbrown.x.biorhythms
 
+import java.math.BigDecimal
+import java.math.RoundingMode
 import java.time.Duration
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -22,13 +24,19 @@ class BiorhythmCalculator {
 
     }
 
-    private fun calculate(dateTimeOfBirth: LocalDateTime): CalculationResults {
+
+
+    fun _calculate(dateTimeOfBirth: LocalDateTime): CalculationResults {
         val daysAlive = getNumberOfDaysAlive(dateTimeOfBirth)
         val physicalScore = calculateScore(Calculation.PHYSICAL, daysAlive)
         val emotionalScore = calculateScore(Calculation.EMOTIONAL, daysAlive)
         val intellectualScore = calculateScore(Calculation.INTELLECTUAL, daysAlive)
 
-        return CalculationResults(physicalScore, emotionalScore, intellectualScore)
+        return CalculationResults(
+            BigDecimal(physicalScore).setScale(4, RoundingMode.HALF_EVEN),
+            BigDecimal(emotionalScore).setScale(4, RoundingMode.HALF_EVEN),
+            BigDecimal(intellectualScore).setScale(4, RoundingMode.HALF_EVEN)
+        )
     }
 
     private fun getNumberOfDaysAlive(dateTimeOfBirth: LocalDateTime): Long {
