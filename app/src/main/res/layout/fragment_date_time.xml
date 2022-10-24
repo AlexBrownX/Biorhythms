@@ -40,19 +40,20 @@
             android:layout_height="wrap_content"
             android:text="@string/enter_date_and_time_of_birth"
             android:layout_marginBottom="50dp"
-            app:layout_constraintBottom_toTopOf="@id/textview_results"
+            app:layout_constraintBottom_toTopOf="@id/button_show_results"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/textview_results"
+        <Button
+            android:id="@+id/button_show_results"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:text="@string/show_results"
+            android:enabled="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

@@ -12,13 +12,11 @@ import androidx.fragment.app.DialogFragment
 class DateDialogFragment : DialogFragment(), DatePickerDialog.OnDateSetListener {
 
     private lateinit var dateTimeStorage: DateTimeStorage
-    private lateinit var mainActivity: MainActivity
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         super.onCreate(savedInstanceState)
 
-        mainActivity = context as MainActivity
-        dateTimeStorage = mainActivity.dateTimeStorage
+        dateTimeStorage = context?.let { DateTimeStorage(it, this.activity as MainActivity) }!!
 
         return DatePickerDialog(requireContext(), this, dateTimeStorage.savedDateTime.year, dateTimeStorage.savedDateTime.month.value, dateTimeStorage.savedDateTime.dayOfMonth)
     }
@@ -30,7 +28,5 @@ class DateDialogFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
         dateTimeStorage.saveDate(year, month, dayOfMonth)
-        mainActivity.displayDateOfBirth()
-        mainActivity.runCalculation()
     }
 }

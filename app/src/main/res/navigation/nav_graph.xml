@@ -9,6 +9,22 @@
         android:id="@+id/DateTimeFragment"
         android:name="alexbrown.x.biorhythms.DateTimeFragment"
         android:label="@string/date_time_fragment_label"
-        tools:layout="@layout/fragment_date_time" />
+        tools:layout="@layout/fragment_date_time">
+
+        <action
+            android:id="@+id/action_DateTimeFragment_to_ResultFragment"
+            app:destination="@id/ResultFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ResultFragment"
+        android:name="alexbrown.x.biorhythms.ResultFragment"
+        android:label="@string/result_fragment_label"
+        tools:layout="@layout/fragment_result">
+
+        <action
+            android:id="@+id/action_ResultFragment_to_DateTimeFragment"
+            app:destination="@id/DateTimeFragment" />
+    </fragment>
 
 </navigation>

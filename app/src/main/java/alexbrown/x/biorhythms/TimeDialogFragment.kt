@@ -13,13 +13,11 @@ import androidx.fragment.app.DialogFragment
 class TimeDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener {
 
     private lateinit var dateTimeStorage: DateTimeStorage
-    private lateinit var mainActivity: MainActivity
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         super.onCreate(savedInstanceState)
 
-        mainActivity = context as MainActivity
-        dateTimeStorage = mainActivity.dateTimeStorage
+        dateTimeStorage = context?.let { DateTimeStorage(it, this.activity as MainActivity) }!!
 
         return TimePickerDialog(activity, this, dateTimeStorage.savedDateTime.hour, dateTimeStorage.savedDateTime.minute, DateFormat.is24HourFormat(activity))
     }
@@ -31,7 +29,5 @@ class TimeDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener 
 
     override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
         dateTimeStorage.saveTime(hourOfDay, minute)
-        mainActivity.displayDateOfBirth()
-        mainActivity.runCalculation()
     }
 }
