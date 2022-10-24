@@ -95,7 +95,7 @@ class MainActivity : AppCompatActivity() {
         if (dateFile.exists() && timeFile.exists()) {
             val resultsTextView = findViewById<TextView>(R.id.textview_results)
             val dateTime = getDateTime(dateFile, timeFile)
-            val results = biorhythmCalculator._calculate(dateTime)
+            val results = biorhythmCalculator.calculate(dateTime)
             resultsTextView.text = "Emotional: ${results.emotionalScore} \nPhysical: ${results.physicalScore} \nIntellectual: ${results.intellectualScore}"
         }
     }
