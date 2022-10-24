@@ -6,7 +6,7 @@ import java.time.Duration
 import java.time.LocalDateTime
 import kotlin.math.sin
 
-class BiorhythmCalculator {
+class BiorhythmCalculator(val dateTimeStorage: DateTimeStorage) {
 
     enum class Calculation(val numberOfDays: Int) {
         PHYSICAL(23),
@@ -14,8 +14,8 @@ class BiorhythmCalculator {
         INTELLECTUAL(33)
     }
 
-    fun calculate(dateTimeOfBirth: LocalDateTime): CalculationResults {
-        val daysAlive = getNumberOfDaysAlive(dateTimeOfBirth)
+    fun calculate(): CalculationResults {
+        val daysAlive = getNumberOfDaysAlive(dateTimeStorage.savedDateTime)
         val physicalScore = calculateScore(Calculation.PHYSICAL, daysAlive)
         val emotionalScore = calculateScore(Calculation.EMOTIONAL, daysAlive)
         val intellectualScore = calculateScore(Calculation.INTELLECTUAL, daysAlive)

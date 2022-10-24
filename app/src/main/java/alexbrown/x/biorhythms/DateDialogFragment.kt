@@ -1,6 +1,5 @@
 package alexbrown.x.biorhythms
 
-import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.os.Bundle
@@ -9,32 +8,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
 import androidx.fragment.app.DialogFragment
-import java.io.File
-import java.util.*
-
 
 class DateDialogFragment : DialogFragment(), DatePickerDialog.OnDateSetListener {
+
+    private lateinit var dateTimeStorage: DateTimeStorage
+    private lateinit var mainActivity: MainActivity
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         super.onCreate(savedInstanceState)
 
-        val file = File(context!!.filesDir, "DateOfBirth")
+        mainActivity = context as MainActivity
+        dateTimeStorage = mainActivity.dateTimeStorage
 
-        if (file.exists()) {
-            val savedDate = file.readText()
-            val savedYear = savedDate.split("/")[0]
-            val savedMonth = savedDate.split("/")[1]
-            val savedDay = savedDate.split("/")[2]
-
-            return DatePickerDialog(requireContext(), this, Integer.valueOf(savedYear), Integer.valueOf(savedMonth), Integer.valueOf(savedDay))
-        }
-
-        val calendar = Calendar.getInstance()
-        val year = calendar.get(Calendar.YEAR)
-        val month = calendar.get(Calendar.MONTH)
-        val day = calendar.get(Calendar.DAY_OF_MONTH)
-
-        return DatePickerDialog(requireContext(), this, year, month, day)
+        return DatePickerDialog(requireContext(), this, dateTimeStorage.savedDateTime.year, dateTimeStorage.savedDateTime.month.value, dateTimeStorage.savedDateTime.dayOfMonth)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -43,11 +29,8 @@ class DateDialogFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
     }
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
-        val file = File(context!!.filesDir, "DateOfBirth")
-        file.writeText("$year/$month/$dayOfMonth")
-
-        val activity = context as MainActivity
-        activity.setDateAndTimeFromFile()
-        activity.runCalculation()
+        dateTimeStorage.saveDate(year, month, dayOfMonth)
+        mainActivity.displayDateOfBirth()
+        mainActivity.runCalculation()
     }
 }

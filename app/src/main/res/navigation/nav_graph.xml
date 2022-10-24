@@ -3,29 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/DateTimeFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="alexbrown.x.biorhythms.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first" />
+        android:id="@+id/DateTimeFragment"
+        android:name="alexbrown.x.biorhythms.DateTimeFragment"
+        android:label="@string/date_time_fragment_label"
+        tools:layout="@layout/fragment_date_time" />
 
-<!--    <fragment-->
-<!--        android:id="@+id/DateTimeFragment"-->
-<!--        android:name="alexbrown.x.biorhythms.TimeDialogFragment"-->
-<!--        android:layout_width="300dp"-->
-<!--        android:layout_height="300dp"-->
-<!--        tools:layout="@layout/fragment_date_time"/>-->
-
-<!--    <fragment-->
-<!--        android:id="@+id/SecondFragment"-->
-<!--        android:name="alexbrown.x.biorhythms.SecondFragment"-->
-<!--        android:label="@string/second_fragment_label"-->
-<!--        tools:layout="@layout/fragment_second">-->
-
-<!--        <action-->
-<!--            android:id="@+id/action_SecondFragment_to_FirstFragment"-->
-<!--            app:destination="@id/FirstFragment" />-->
-<!--    </fragment>-->
 </navigation>

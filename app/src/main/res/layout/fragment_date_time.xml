@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FirstFragment">
+    tools:context=".DateTimeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,47 +16,40 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/date_of_birth"
+            android:layout_marginBottom="20dp"
             android:onClick="showDateDialogFragment"
-            app:layout_constraintBottom_toTopOf="@id/textview_date"
+            app:layout_constraintBottom_toTopOf="@id/button_time"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textview_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/enter_date_of_birth"
-            android:layout_margin="20dp"
-            app:layout_constraintBottom_toTopOf="@id/button_time"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
 
         <Button
             android:id="@+id/button_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/time_of_birth"
+            android:layout_marginBottom="20dp"
             android:onClick="showTimeDialogFragment"
-            app:layout_constraintBottom_toTopOf="@id/textview_time"
+            android:text="@string/time_of_birth"
+            app:layout_constraintBottom_toTopOf="@id/textview_date_time"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/textview_time"
+            android:id="@+id/textview_date_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/enter_time_of_birth"
+            android:text="@string/enter_date_and_time_of_birth"
+            android:layout_marginBottom="50dp"
             app:layout_constraintBottom_toTopOf="@id/textview_results"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/textview_results"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Results"
+            android:text=""
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

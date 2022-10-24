@@ -9,30 +9,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TimePicker
 import androidx.fragment.app.DialogFragment
-import java.io.File
 
 class TimeDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener {
+
+    private lateinit var dateTimeStorage: DateTimeStorage
+    private lateinit var mainActivity: MainActivity
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         super.onCreate(savedInstanceState)
 
-        val file = File(context!!.filesDir, "TimeOfBirth")
+        mainActivity = context as MainActivity
+        dateTimeStorage = mainActivity.dateTimeStorage
 
-        if (file.exists()) {
-            val savedTime = file.readText()
-            val savedHour = savedTime.split("/")[0]
-            val savedMinutes = savedTime.split("/")[1]
-
-            return TimePickerDialog(
-                activity,
-                this,
-                Integer.valueOf(savedHour),
-                Integer.valueOf(savedMinutes),
-                DateFormat.is24HourFormat(activity)
-            )
-        }
-
-        return TimePickerDialog(activity, this, 0, 0, DateFormat.is24HourFormat(activity))
+        return TimePickerDialog(activity, this, dateTimeStorage.savedDateTime.hour, dateTimeStorage.savedDateTime.minute, DateFormat.is24HourFormat(activity))
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -41,11 +30,8 @@ class TimeDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener 
     }
 
     override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
-        val file = File(context!!.filesDir, "TimeOfBirth")
-        file.writeText("$hourOfDay/$minute")
-
-        val activity = context as MainActivity
-        activity.setDateAndTimeFromFile()
-        activity.runCalculation()
+        dateTimeStorage.saveTime(hourOfDay, minute)
+        mainActivity.displayDateOfBirth()
+        mainActivity.runCalculation()
     }
 }
