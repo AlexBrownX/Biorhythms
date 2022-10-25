@@ -17,6 +17,8 @@ Personal project to implement the [biorhythms](https://en.wikipedia.org/wiki/Bio
 
 Built using the elegant modern declarative data visualization chart framework [AAInfographics](https://github.com/AAChartModel/AAChartCore-Kotlin).
 
+## Screenshots
+
 ![Homescreen Example 1](./HomescreenExample1.png) ![Homescreen Example 2](./HomescreenExample2.png) 
 
 ![Daily Biorhythms Example](./DailyResultsExample.png) ![Weekly Biorhythms Example](./WeeklyResultsExample.png) ![Long Term Biorhythms Example](./LongTermResultsExample.png) 
