@@ -1,9 +1,11 @@
 # Biorhythms Android App
 ## By Alex Brown
 
+![Square Application Icon](./app/src/main/res/mipmap-xxhdpi/bio_icon_launcher.png) ![Round Application Icon](./app/src/main/res/mipmap-xxhdpi/bio_icon_launcher_round.png)
+
 # Introduction
 
-Personal project to implement the <a href="https://en.wikipedia.org/wiki/Biorhythm_(pseudoscience)" target="_blank">biorhythms</a> algorithm using modern Android development practises.
+Personal project to implement the [biorhythms](https://en.wikipedia.org/wiki/Biorhythm_(pseudoscience)) algorithm using modern Android development practises.
 
 # Algorithm
 
@@ -13,8 +15,6 @@ Personal project to implement the <a href="https://en.wikipedia.org/wiki/Biorhyt
 
 # Charting
 
-Built using extremely flexible <a href="https://github.com/AAChartModel/AAChartCore-Kotlin" target="_blank">AAInfographics</a> chart framework.
-
-![Square Application Icon](./app/src/main/res/mipmap-xxhdpi/bio_icon_launcher.png) ![Round Application Icon](./app/src/main/res/mipmap-xxhdpi/bio_icon_launcher_round.png)
+Built using th extremely flexible [AAInfographics](https://github.com/AAChartModel/AAChartCore-Kotlin) chart framework.
 
 ![Homescreen Example](./HomescreenExample.png) ![Daily Biorhythms Example](./DailyResultsExample.png) ![Weekly Biorhythms Example](./WeeklyResultsExample.png) ![Long Term Biorhythms Example](./LongTermResultsExample.png) 
