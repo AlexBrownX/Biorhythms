@@ -61,8 +61,11 @@ class MainActivity : AppCompatActivity() {
         TimeDialogFragment().show(supportFragmentManager, "TimeDialogFragment")
     }
 
-    fun showDateResultActivity(v: View) {
-        val resultIntent = Intent(this, ResultActivity::class.java)
-        startActivity(resultIntent)
+    fun showDailyResultActivity(v: View) {
+        startActivity(Intent(this, DailyResultActivity::class.java))
+    }
+
+    fun showWeeklyResultActivity(v: View) {
+        startActivity(Intent(this, WeekResultActivity::class.java))
     }
 }

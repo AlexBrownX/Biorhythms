@@ -4,33 +4,54 @@ import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.github.aachartmodel.aainfographics.aachartcreator.*
+import com.github.aachartmodel.aainfographics.aaoptionsmodel.AAPlotLinesElement
 import com.github.aachartmodel.aainfographics.aaoptionsmodel.AAStyle
+import java.util.*
 
-class ResultActivity : AppCompatActivity() {
+class DailyResultActivity : AppCompatActivity() {
 
     private lateinit var dateTimeStorage: DateTimeStorage
     private lateinit var biorhythmCalculator: BiorhythmCalculator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_result)
+        setContentView(R.layout.activity_daily_result)
 
         dateTimeStorage = DateTimeStorage(baseContext)
-        biorhythmCalculator = BiorhythmCalculator(dateTimeStorage)
+        biorhythmCalculator = BiorhythmCalculator()
 
-        val chartView = findViewById<AAChartView>(R.id.chart_view)
-        val chartModel: AAChartModel = getChartModel()
+        val startDate = dateTimeStorage.savedDateTime
+        val endDate = Date()
+        val results = biorhythmCalculator.calculate(startDate, endDate)
 
-        chartView.aa_drawChartWithChartModel(chartModel)
+        val chartView = findViewById<AAChartView>(R.id.daily_chart_view)
+        val chartTheme = getChartStyle()
+        val chartModel = getChartModel(chartTheme, results)
+        val chartOptions = getChartOptions(chartModel, chartTheme)
+
+        chartView.aa_drawChartWithChartOptions(chartOptions)
     }
 
-    private fun getChartModel(): AAChartModel {
-        val results = biorhythmCalculator.calculate()
-        val chartTheme = getChartStyle()
+    private fun getChartOptions(chartModel: AAChartModel, chartTheme: AAStyle): AAOptions {
+        val yAxisPlotLinesArray = arrayOf(
+            AAPlotLinesElement()
+            .color(chartTheme.color.toString())
+            .dashStyle(AAChartLineDashStyleType.Solid)
+            .width(2)
+            .value(0)
+            .zIndex(1)
+        )
 
+        val aaOptions = chartModel.aa_toAAOptions()
+        aaOptions.yAxis?.plotLines(yAxisPlotLinesArray)
+
+        return aaOptions
+    }
+
+    private fun getChartModel(chartTheme: AAStyle, results: CalculationResults): AAChartModel {
         return AAChartModel()
             .chartType(AAChartType.Column)
-            .title("Your Biorhythms")
+            .title("Daily Biorhythms")
             .axesTextColor(chartTheme.color.toString())
             .titleStyle(chartTheme)
             .dataLabelsStyle(chartTheme)
@@ -38,6 +59,10 @@ class ResultActivity : AppCompatActivity() {
             .dataLabelsEnabled(true)
             .xAxisLabelsEnabled(false)
             .tooltipEnabled(false)
+            .xAxisGridLineWidth(0.5)
+            .yAxisGridLineWidth(0.5)
+            .yAxisMax(1)
+            .yAxisMin(-1)
             .series(
                 arrayOf(
                     AASeriesElement()

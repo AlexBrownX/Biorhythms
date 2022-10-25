@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class DateTimeStorage(val context: Context, private val activity: MainActivity?) {
+
     constructor(context: Context) : this(context, null)
 
     private val dateFormatter = SimpleDateFormat("dd/MM/yyyy HH:mm")
@@ -28,7 +29,7 @@ class DateTimeStorage(val context: Context, private val activity: MainActivity?)
         dateFile.writeText("$year/${month}/$dayOfMonth")
         setDateTimeFromStorage()
         displayDateOfBirth()
-        enableCalculateButton()
+        enableResultButtons()
     }
 
     fun saveTime(hourOfDay: Int, minute: Int) {
@@ -41,9 +42,12 @@ class DateTimeStorage(val context: Context, private val activity: MainActivity?)
         activity?.findViewById<TextView>(R.id.textview_date_time)!!.text = "Date of birth: ${dateFormatter.format(savedDateTime)}"
     }
 
-    private fun enableCalculateButton() {
-        val calculateButton = activity?.findViewById(R.id.button_show_results) as Button
-        calculateButton.isEnabled = true
+    private fun enableResultButtons() {
+        val dailyResultsButton = activity?.findViewById(R.id.button_show_daily_results) as Button
+        dailyResultsButton.isEnabled = true
+
+        val weeklyResultsButton = activity.findViewById(R.id.button_show_weekly_results) as Button
+        weeklyResultsButton.isEnabled = true
     }
 
     private fun setDateTimeFromStorage() {

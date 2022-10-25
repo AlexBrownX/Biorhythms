@@ -6,6 +6,7 @@
     <string name="back">Back</string>
     <string name="date_of_birth">Date of birth</string>
     <string name="time_of_birth">Time of birth</string>
-    <string name="show_results">Calculate Biorhythms</string>
+    <string name="show_daily_results">Daily Biorhythms</string>
+    <string name="show_weekly_results">Weekly Biorhythms</string>
     <string name="enter_date_and_time_of_birth">Please enter a date and time of birth</string>
 </resources>

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import java.util.*
 
 class ResultFragment : Fragment() {
 
@@ -22,7 +23,7 @@ class ResultFragment : Fragment() {
         _binding = FragmentResultBinding.inflate(inflater, container, false)
 
         dateTimeStorage = context?.let { DateTimeStorage(it, this.activity as MainActivity) }!!
-        biorhythmCalculator = BiorhythmCalculator(dateTimeStorage)
+        biorhythmCalculator = BiorhythmCalculator()
 
         return binding.root
     }
@@ -43,7 +44,9 @@ class ResultFragment : Fragment() {
     }
 
     private fun calculateResults() {
-        val results = biorhythmCalculator.calculate()
+        val startDate = dateTimeStorage.savedDateTime
+        val endDate = Date()
+        val results = biorhythmCalculator.calculate(startDate, endDate)
         _binding!!.textviewResult.text = "Emotional: ${results.emotionalScore} \nPhysical: ${results.physicalScore} \nIntellectual: ${results.intellectualScore}"
     }
 }
