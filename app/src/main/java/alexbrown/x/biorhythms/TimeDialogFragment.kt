@@ -19,11 +19,10 @@ class TimeDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener 
 
         dateTimeStorage = context?.let { DateTimeStorage(it, this.activity as MainActivity) }!!
 
-        return TimePickerDialog(activity, this, dateTimeStorage.savedDateTime.hour, dateTimeStorage.savedDateTime.minute, DateFormat.is24HourFormat(activity))
+        return TimePickerDialog(activity, this, dateTimeStorage.savedDateTime.hours, dateTimeStorage.savedDateTime.minutes, DateFormat.is24HourFormat(activity))
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_time_dialog, container, false)
     }
 

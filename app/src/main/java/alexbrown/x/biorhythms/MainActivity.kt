@@ -1,6 +1,7 @@
 package alexbrown.x.biorhythms
 
 import alexbrown.x.biorhythms.databinding.ActivityMainBinding
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -58,5 +59,10 @@ class MainActivity : AppCompatActivity() {
 
     fun showTimeDialogFragment(v: View) {
         TimeDialogFragment().show(supportFragmentManager, "TimeDialogFragment")
+    }
+
+    fun showDateResultActivity(v: View) {
+        val resultIntent = Intent(this, ResultActivity::class.java)
+        startActivity(resultIntent)
     }
 }

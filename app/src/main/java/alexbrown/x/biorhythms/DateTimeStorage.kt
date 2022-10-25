@@ -4,19 +4,18 @@ import android.content.Context
 import android.widget.Button
 import android.widget.TextView
 import java.io.File
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
+import java.text.SimpleDateFormat
 import java.util.*
 
-class DateTimeStorage(val context: Context, private val activity: MainActivity) {
+class DateTimeStorage(val context: Context, private val activity: MainActivity?) {
+    constructor(context: Context) : this(context, null)
 
-    private val dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")
+    private val dateFormatter = SimpleDateFormat("dd/MM/yyyy HH:mm")
     private val dateFile: File = File(context.filesDir, "DateOfBirth")
     private val timeFile: File = File(context.filesDir, "TimeOfBirth")
+    lateinit var savedDateTime: Date
 
-    lateinit var savedDateTime: LocalDateTime
     var firstRun = false
-
     init {
         if (!dateFile.exists()) {
             firstRun = true
@@ -26,7 +25,7 @@ class DateTimeStorage(val context: Context, private val activity: MainActivity) 
     }
 
     fun saveDate(year: Int, month: Int, dayOfMonth: Int) {
-        dateFile.writeText("$year/${month + 1}/$dayOfMonth")
+        dateFile.writeText("$year/${month}/$dayOfMonth")
         setDateTimeFromStorage()
         displayDateOfBirth()
         enableCalculateButton()
@@ -39,11 +38,11 @@ class DateTimeStorage(val context: Context, private val activity: MainActivity) 
     }
 
     private fun displayDateOfBirth() {
-        activity.findViewById<TextView>(R.id.textview_date_time).text = "Date of birth: ${savedDateTime.format(dateFormatter)}"
+        activity?.findViewById<TextView>(R.id.textview_date_time)!!.text = "Date of birth: ${dateFormatter.format(savedDateTime)}"
     }
 
     private fun enableCalculateButton() {
-        val calculateButton = activity.findViewById(R.id.button_show_results) as Button
+        val calculateButton = activity?.findViewById(R.id.button_show_results) as Button
         calculateButton.isEnabled = true
     }
 
@@ -68,6 +67,6 @@ class DateTimeStorage(val context: Context, private val activity: MainActivity) 
             minute = Integer.valueOf(savedTimeString.split("/")[1])
         }
 
-        savedDateTime = LocalDateTime.of(year, month, day, hour, minute)
+        savedDateTime = GregorianCalendar(year, month, day, hour, minute).time
     }
 }

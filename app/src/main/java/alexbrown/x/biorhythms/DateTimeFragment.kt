@@ -8,14 +8,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import java.time.format.DateTimeFormatter
+import java.text.SimpleDateFormat
 
 class DateTimeFragment : Fragment() {
 
-    private val dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")
     private lateinit var dateTimeStorage: DateTimeStorage
-
+    private val dateFormatter = SimpleDateFormat("dd/MM/yyyy HH:mm")
     private var _binding: FragmentDateTimeBinding? = null
 
     // This property is only valid between onCreateView and onDestroyView.
@@ -30,13 +28,13 @@ class DateTimeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonShowResults.setOnClickListener {
-            findNavController().navigate(R.id.action_DateTimeFragment_to_ResultFragment)
-        }
+//        binding.buttonShowResults.setOnClickListener {
+//            //findNavController().navigate(R.id.action_DateTimeFragment_to_ResultFragment)
+//        }
 
         if (!dateTimeStorage.firstRun) {
             val dateOfBirthTextView = view.findViewById<TextView>(R.id.textview_date_time)
-            dateOfBirthTextView.text = "Date of birth: ${dateTimeStorage.savedDateTime.format(dateFormatter)}"
+            dateOfBirthTextView.text = "Date of birth: ${dateFormatter.format(dateTimeStorage.savedDateTime)}"
 
             val calculateButton = view.findViewById(R.id.button_show_results) as Button
             calculateButton.isEnabled = true

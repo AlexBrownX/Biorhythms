@@ -18,11 +18,10 @@ class DateDialogFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
 
         dateTimeStorage = context?.let { DateTimeStorage(it, this.activity as MainActivity) }!!
 
-        return DatePickerDialog(requireContext(), this, dateTimeStorage.savedDateTime.year, dateTimeStorage.savedDateTime.month.value, dateTimeStorage.savedDateTime.dayOfMonth)
+        return DatePickerDialog(requireContext(), this, dateTimeStorage.savedDateTime.year, dateTimeStorage.savedDateTime.month, dateTimeStorage.savedDateTime.day)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_date_dialog, container, false)
     }
 

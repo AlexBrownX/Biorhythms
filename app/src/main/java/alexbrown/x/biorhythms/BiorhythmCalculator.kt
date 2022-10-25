@@ -2,8 +2,9 @@ package alexbrown.x.biorhythms
 
 import java.math.BigDecimal
 import java.math.RoundingMode
-import java.time.Duration
-import java.time.LocalDateTime
+import java.util.Date
+import java.util.concurrent.TimeUnit
+import kotlin.math.abs
 import kotlin.math.sin
 
 class BiorhythmCalculator(val dateTimeStorage: DateTimeStorage) {
@@ -27,9 +28,10 @@ class BiorhythmCalculator(val dateTimeStorage: DateTimeStorage) {
         )
     }
 
-    private fun getNumberOfDaysAlive(dateTimeOfBirth: LocalDateTime): Long {
-        val now = LocalDateTime.now()
-        return Duration.between(dateTimeOfBirth, now).toDays()
+    private fun getNumberOfDaysAlive(dateTimeOfBirth: Date): Long {
+        val now = Date()
+        val differentInMilliseconds = abs(now.time - dateTimeOfBirth.time)
+        return TimeUnit.DAYS.convert(differentInMilliseconds, TimeUnit.MILLISECONDS);
     }
 
     // sin((2 * pi * daysAlive) / calculation.numberOfDays)
