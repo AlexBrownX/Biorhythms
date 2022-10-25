@@ -1,7 +1,10 @@
 package alexbrown.x.biorhythms
 
 import android.content.Context
+import android.transition.Visibility
+import android.view.View
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.TextView
 import java.io.File
 import java.text.SimpleDateFormat
@@ -47,23 +50,14 @@ class DateTimeStorage(val context: Context, private val activity: MainActivity?)
     }
 
     private fun enableResultButtons() {
-        val dailyResultsButton = activity?.findViewById(R.id.button_show_daily_results) as Button
-        dailyResultsButton.isEnabled = true
+        val daily = activity?.findViewById(R.id.daily_layout) as LinearLayout
+        daily.visibility = View.VISIBLE
 
-        val dailyResultsTextView = activity.findViewById(R.id.textview_daily_information) as TextView
-        dailyResultsTextView.isEnabled = true
+        val weekly = activity.findViewById(R.id.weekly_layout) as LinearLayout
+        weekly.visibility = View.VISIBLE
 
-        val weeklyResultsButton = activity.findViewById(R.id.button_show_weekly_results) as Button
-        weeklyResultsButton.isEnabled = true
-
-        val weeklyResultsTextView = activity.findViewById(R.id.textview_weekly_information) as TextView
-        weeklyResultsTextView.isEnabled = true
-
-        val longTermResultsButton = activity.findViewById(R.id.button_show_long_term_results) as Button
-        longTermResultsButton.isEnabled = true
-
-        val longTermResultsTextView = activity.findViewById(R.id.textview_long_term_information) as TextView
-        longTermResultsTextView.isEnabled = true
+        val longTerm = activity.findViewById(R.id.long_term_layout) as LinearLayout
+        longTerm.visibility = View.VISIBLE
     }
 
     private fun setDateTimeFromStorage() {

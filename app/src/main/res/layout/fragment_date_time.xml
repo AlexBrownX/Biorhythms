@@ -11,6 +11,7 @@
         android:layout_height="match_parent"
         android:padding="16dp">
 
+        <!-- Logo -->
         <ImageView
             android:id="@+id/imageview_main_icon"
             android:layout_width="match_parent"
@@ -20,6 +21,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- Instructions -->
         <TextView
             android:id="@+id/textview_instructions"
             android:layout_width="match_parent"
@@ -31,6 +33,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageview_main_icon" />
 
+        <!-- Date and time pickers -->
         <LinearLayout
             android:id="@+id/date_time_layout"
             android:layout_width="match_parent"
@@ -40,6 +43,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textview_instructions">
 
+            <!-- Date of birth picker -->
             <Button
                 android:id="@+id/button_date"
                 android:layout_width="wrap_content"
@@ -49,6 +53,7 @@
                 android:onClick="showDateDialogFragment"
                 android:text="@string/date_of_birth" />
 
+            <!-- Time of birth picker -->
             <Button
                 android:id="@+id/button_time"
                 android:layout_width="wrap_content"
@@ -59,6 +64,7 @@
                 android:text="@string/time_of_birth" />
         </LinearLayout>
 
+        <!-- Saved date of birth -->
         <TextView
             android:id="@+id/textview_date_time"
             android:layout_width="match_parent"
@@ -70,92 +76,134 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/date_time_layout" />
 
+        <!-- Bullets -->
+        <LinearLayout
+            android:id="@+id/bullets_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_date_time">
+
+            <!-- Bullet -->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/red_bullet"
+                android:contentDescription="@string/bullet" />
+
+            <!-- Bullet -->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/green_bullet"
+                android:contentDescription="@string/bullet" />
+
+            <!-- Bullet -->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/yellow_bullet"
+                android:contentDescription="@string/bullet" />
+
+        </LinearLayout>
+
+        <!-- Daily layout -->
         <LinearLayout
             android:id="@+id/daily_layout"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginTop="50dp"
             android:orientation="horizontal"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textview_date_time">
+            app:layout_constraintTop_toBottomOf="@+id/bullets_layout">
 
+            <!-- Daily results -->
             <Button
                 android:id="@+id/button_show_daily_results"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginEnd="8dp"
-                android:enabled="false"
                 android:text="@string/show_daily_results"
                 android:onClick="showDailyResultActivity" />
 
+            <!-- Daily information -->
             <TextView
                 android:id="@+id/textview_daily_information"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginStart="8dp"
-                android:enabled="false"
                 android:text="@string/daily_results_information"
                 android:textSize="12sp" />
         </LinearLayout>
 
+        <!-- Weekly layout -->
         <LinearLayout
             android:id="@+id/weekly_layout"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/daily_layout">
 
+            <!-- Weekly results -->
             <Button
                 android:id="@+id/button_show_weekly_results"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginEnd="8dp"
-                android:enabled="false"
                 android:text="@string/show_weekly_results"
                 android:onClick="showWeeklyResultActivity" />
 
+            <!-- Weekly information -->
             <TextView
                 android:id="@+id/textview_weekly_information"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginStart="8dp"
-                android:enabled="false"
                 android:text="@string/weekly_results_information"
                 android:textSize="12sp" />
         </LinearLayout>
 
+        <!-- Long term layout -->
         <LinearLayout
             android:id="@+id/long_term_layout"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/weekly_layout">
 
+            <!-- Long term results -->
             <Button
                 android:id="@+id/button_show_long_term_results"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginEnd="8dp"
-                android:enabled="false"
                 android:text="@string/show_long_term_results"
                 android:onClick="showLongTermResultActivity" />
 
+            <!-- Long term information -->
             <TextView
                 android:id="@+id/textview_long_term_information"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginStart="8dp"
-                android:enabled="false"
                 android:text="@string/long_term_results_information"
                 android:textSize="12sp" />
         </LinearLayout>

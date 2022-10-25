@@ -9,12 +9,13 @@
     <string name="show_weekly_results">Weekly Biorhythms</string>
     <string name="show_long_term_results">Long Term Biorhythms</string>
     <string name="enter_date_and_time_of_birth">Please select your date and time of birth to enable your biorhythms</string>
-    <string name="instructions">Select your date and time of birth using the buttons below. If you don\'t know your time of birth you don\'t need to select one and midnight will be used instead</string>
+    <string name="instructions">To view you biorhythms please select your date and time of birth using the buttons below. If you don\'t know your time of birth you don\'t need to select one and midnight will be used instead</string>
     <string name="daily_results_information">Daily biorhythms page displays a column chart with your Physical, Emotional and Intellectual biorhythms scores for today</string>
     <string name="weekly_results_information">Weekly biorhythms page displays a spline chart with your Physical, Emotional and Intellectual biorhythms scores for today, the last 3 days and next 3 days</string>
     <string name="long_term_results_information">Long term biorhythms page displays a spline chart with your Physical, Emotional and Intellectual biorhythms scores for today, the last 15 days and next 15 days</string>
     <string name="biorhythms_icon">Biorhythms Icon</string>
     <string name="copyright">By Alex Brown</string>
+    <string name="bullet">coloured bullet icon</string>
 
 
 </resources>

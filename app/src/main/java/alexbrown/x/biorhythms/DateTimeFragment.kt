@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import java.text.SimpleDateFormat
@@ -32,23 +33,14 @@ class DateTimeFragment : Fragment() {
             val dateOfBirthTextView = view.findViewById<TextView>(R.id.textview_date_time)
             dateOfBirthTextView.text = "Selected date of birth: ${dateFormatter.format(dateTimeStorage.savedDateTime.time)}"
 
-            val dailyResultsButton = view.findViewById(R.id.button_show_daily_results) as Button
-            dailyResultsButton.isEnabled = true
+            val daily = view.findViewById(R.id.daily_layout) as LinearLayout
+            daily.visibility = View.VISIBLE
 
-            val dailyResultsTextView = view.findViewById(R.id.textview_daily_information) as TextView
-            dailyResultsTextView.isEnabled = true
+            val weekly = view.findViewById(R.id.weekly_layout) as LinearLayout
+            weekly.visibility = View.VISIBLE
 
-            val weeklyResultsButton = view.findViewById(R.id.button_show_weekly_results) as Button
-            weeklyResultsButton.isEnabled = true
-
-            val weeklyResultsTextView = view.findViewById(R.id.textview_weekly_information) as TextView
-            weeklyResultsTextView.isEnabled = true
-
-            val longTermResultsButton = view.findViewById(R.id.button_show_long_term_results) as Button
-            longTermResultsButton.isEnabled = true
-
-            val longTermResultsTextView = view.findViewById(R.id.textview_long_term_information) as TextView
-            longTermResultsTextView.isEnabled = true
+            val longTerm = view.findViewById(R.id.long_term_layout) as LinearLayout
+            longTerm.visibility = View.VISIBLE
         }
     }
 
