@@ -11,76 +11,168 @@
         android:layout_height="match_parent"
         android:padding="16dp">
 
-        <Button
-            android:id="@+id/button_date"
-            android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/imageview_main_icon"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/date_of_birth"
-            android:layout_marginBottom="20dp"
-            android:onClick="showDateDialogFragment"
-            app:layout_constraintBottom_toTopOf="@id/button_time"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@mipmap/bio_icon_launcher"
+            android:contentDescription="@string/biorhythms_icon"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/button_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:onClick="showTimeDialogFragment"
-            android:text="@string/time_of_birth"
-            app:layout_constraintBottom_toTopOf="@id/textview_date_time"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/textview_instructions"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="25dp"
+            android:text="@string/instructions"
+            android:textAlignment="textStart"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageview_main_icon" />
+
+        <LinearLayout
+            android:id="@+id/date_time_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_instructions">
+
+            <Button
+                android:id="@+id/button_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:onClick="showDateDialogFragment"
+                android:text="@string/date_of_birth" />
+
+            <Button
+                android:id="@+id/button_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:onClick="showTimeDialogFragment"
+                android:text="@string/time_of_birth" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textview_date_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="25dp"
             android:text="@string/enter_date_and_time_of_birth"
-            android:layout_marginBottom="50dp"
-            app:layout_constraintBottom_toTopOf="@id/button_show_daily_results"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/button_show_daily_results"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/show_daily_results"
-            android:onClick="showDailyResultActivity"
-            android:enabled="false"
-            android:layout_marginBottom="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textAlignment="center"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/button_show_weekly_results" />
+            app:layout_constraintTop_toBottomOf="@+id/date_time_layout" />
 
-        <Button
-            android:id="@+id/button_show_weekly_results"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/show_weekly_results"
-            android:onClick="showWeeklyResultActivity"
-            android:enabled="false"
-            android:layout_marginBottom="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+        <LinearLayout
+            android:id="@+id/daily_layout"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="50dp"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/button_show_long_term_results"/>
+            app:layout_constraintTop_toBottomOf="@+id/textview_date_time">
 
-        <Button
-            android:id="@+id/button_show_long_term_results"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/show_long_term_results"
-            android:onClick="showLongTermResultActivity"
-            android:enabled="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            <Button
+                android:id="@+id/button_show_daily_results"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:enabled="false"
+                android:text="@string/show_daily_results"
+                android:onClick="showDailyResultActivity" />
+
+            <TextView
+                android:id="@+id/textview_daily_information"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:enabled="false"
+                android:text="@string/daily_results_information"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/weekly_layout"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/daily_layout">
+
+            <Button
+                android:id="@+id/button_show_weekly_results"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:enabled="false"
+                android:text="@string/show_weekly_results"
+                android:onClick="showWeeklyResultActivity" />
+
+            <TextView
+                android:id="@+id/textview_weekly_information"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:enabled="false"
+                android:text="@string/weekly_results_information"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/long_term_layout"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/weekly_layout">
+
+            <Button
+                android:id="@+id/button_show_long_term_results"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:enabled="false"
+                android:text="@string/show_long_term_results"
+                android:onClick="showLongTermResultActivity" />
+
+            <TextView
+                android:id="@+id/textview_long_term_information"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:enabled="false"
+                android:text="@string/long_term_results_information"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textview_copyright"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/copyright"
+            android:textAlignment="center"
+            android:textColor="#B1B1B1"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/long_term_layout" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.core.widget.NestedScrollView>

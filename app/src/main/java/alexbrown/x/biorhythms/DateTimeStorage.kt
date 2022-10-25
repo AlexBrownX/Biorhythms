@@ -43,18 +43,27 @@ class DateTimeStorage(val context: Context, private val activity: MainActivity?)
     }
 
     private fun displayDateOfBirth() {
-        activity?.findViewById<TextView>(R.id.textview_date_time)!!.text = "Date of birth: ${dateFormatter.format(savedDateTime.time)}"
+        activity?.findViewById<TextView>(R.id.textview_date_time)!!.text = "Selected date of birth: ${dateFormatter.format(savedDateTime.time)}"
     }
 
     private fun enableResultButtons() {
         val dailyResultsButton = activity?.findViewById(R.id.button_show_daily_results) as Button
         dailyResultsButton.isEnabled = true
 
+        val dailyResultsTextView = activity.findViewById(R.id.textview_daily_information) as Button
+        dailyResultsTextView.isEnabled = true
+
         val weeklyResultsButton = activity.findViewById(R.id.button_show_weekly_results) as Button
         weeklyResultsButton.isEnabled = true
 
+        val weeklyResultsTextView = activity.findViewById(R.id.textview_weekly_information) as Button
+        weeklyResultsTextView.isEnabled = true
+
         val longTermResultsButton = activity.findViewById(R.id.button_show_long_term_results) as Button
         longTermResultsButton.isEnabled = true
+
+        val longTermResultsTextView = activity.findViewById(R.id.textview_long_term_information) as Button
+        longTermResultsTextView.isEnabled = true
     }
 
     private fun setDateTimeFromStorage() {
