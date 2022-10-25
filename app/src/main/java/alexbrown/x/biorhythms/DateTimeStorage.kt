@@ -50,19 +50,19 @@ class DateTimeStorage(val context: Context, private val activity: MainActivity?)
         val dailyResultsButton = activity?.findViewById(R.id.button_show_daily_results) as Button
         dailyResultsButton.isEnabled = true
 
-        val dailyResultsTextView = activity.findViewById(R.id.textview_daily_information) as Button
+        val dailyResultsTextView = activity.findViewById(R.id.textview_daily_information) as TextView
         dailyResultsTextView.isEnabled = true
 
         val weeklyResultsButton = activity.findViewById(R.id.button_show_weekly_results) as Button
         weeklyResultsButton.isEnabled = true
 
-        val weeklyResultsTextView = activity.findViewById(R.id.textview_weekly_information) as Button
+        val weeklyResultsTextView = activity.findViewById(R.id.textview_weekly_information) as TextView
         weeklyResultsTextView.isEnabled = true
 
         val longTermResultsButton = activity.findViewById(R.id.button_show_long_term_results) as Button
         longTermResultsButton.isEnabled = true
 
-        val longTermResultsTextView = activity.findViewById(R.id.textview_long_term_information) as Button
+        val longTermResultsTextView = activity.findViewById(R.id.textview_long_term_information) as TextView
         longTermResultsTextView.isEnabled = true
     }
 
