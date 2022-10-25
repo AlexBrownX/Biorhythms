@@ -19,6 +19,10 @@ Built using the elegant modern declarative data visualization chart framework [A
 
 ## Screenshots
 
+### Homepage
+
 ![Homescreen Example 1](./HomescreenExample1.png) ![Homescreen Example 2](./HomescreenExample2.png) 
+
+### Charts
 
 ![Daily Biorhythms Example](./DailyResultsExample.png) ![Weekly Biorhythms Example](./WeeklyResultsExample.png) ![Long Term Biorhythms Example](./LongTermResultsExample.png) 
