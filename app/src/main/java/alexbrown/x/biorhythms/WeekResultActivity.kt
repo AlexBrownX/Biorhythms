@@ -24,7 +24,7 @@ class WeekResultActivity : AppCompatActivity() {
         biorhythmCalculator = BiorhythmCalculator()
 
         val sizeOffset = 3
-        val startDate = dateTimeStorage.savedDateTime
+        val startDate = dateTimeStorage.savedDateTime.time
         val endDate = Date()
         val results = biorhythmCalculator.calculate(startDate, endDate, sizeOffset)
 

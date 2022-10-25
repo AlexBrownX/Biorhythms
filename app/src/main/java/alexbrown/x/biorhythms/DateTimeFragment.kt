@@ -34,7 +34,7 @@ class DateTimeFragment : Fragment() {
 
         if (!dateTimeStorage.firstRun) {
             val dateOfBirthTextView = view.findViewById<TextView>(R.id.textview_date_time)
-            dateOfBirthTextView.text = "Date of birth: ${dateFormatter.format(dateTimeStorage.savedDateTime)}"
+            dateOfBirthTextView.text = "Date of birth: ${dateFormatter.format(dateTimeStorage.savedDateTime.time)}"
 
             val dailyResultsButton = view.findViewById(R.id.button_show_daily_results) as Button
             dailyResultsButton.isEnabled = true

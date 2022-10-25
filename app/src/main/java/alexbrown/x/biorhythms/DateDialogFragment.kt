@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
 import androidx.fragment.app.DialogFragment
+import java.util.*
 
 class DateDialogFragment : DialogFragment(), DatePickerDialog.OnDateSetListener {
 
@@ -18,7 +19,7 @@ class DateDialogFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
 
         dateTimeStorage = context?.let { DateTimeStorage(it, this.activity as MainActivity) }!!
 
-        return DatePickerDialog(requireContext(), this, dateTimeStorage.savedDateTime.year, dateTimeStorage.savedDateTime.month, dateTimeStorage.savedDateTime.day)
+        return DatePickerDialog(requireContext(), this, dateTimeStorage.savedDateTime.get(Calendar.YEAR), dateTimeStorage.savedDateTime.get(Calendar.MONTH), dateTimeStorage.savedDateTime.get(Calendar.DATE))
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

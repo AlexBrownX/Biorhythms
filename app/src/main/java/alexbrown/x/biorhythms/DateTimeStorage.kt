@@ -14,7 +14,7 @@ class DateTimeStorage(val context: Context, private val activity: MainActivity?)
     private val dateFormatter = SimpleDateFormat("dd/MM/yyyy HH:mm")
     private val dateFile: File = File(context.filesDir, "DateOfBirth")
     private val timeFile: File = File(context.filesDir, "TimeOfBirth")
-    lateinit var savedDateTime: Date
+    lateinit var savedDateTime: GregorianCalendar
 
     var firstRun = false
     init {
@@ -22,7 +22,11 @@ class DateTimeStorage(val context: Context, private val activity: MainActivity?)
             firstRun = true
         }
 
-        setDateTimeFromStorage()
+        if (dateFile.exists()) {
+            setDateTimeFromStorage()
+        } else {
+            savedDateTime = GregorianCalendar()
+        }
     }
 
     fun saveDate(year: Int, month: Int, dayOfMonth: Int) {
@@ -39,7 +43,7 @@ class DateTimeStorage(val context: Context, private val activity: MainActivity?)
     }
 
     private fun displayDateOfBirth() {
-        activity?.findViewById<TextView>(R.id.textview_date_time)!!.text = "Date of birth: ${dateFormatter.format(savedDateTime)}"
+        activity?.findViewById<TextView>(R.id.textview_date_time)!!.text = "Date of birth: ${dateFormatter.format(savedDateTime.time)}"
     }
 
     private fun enableResultButtons() {
@@ -71,6 +75,6 @@ class DateTimeStorage(val context: Context, private val activity: MainActivity?)
             minute = Integer.valueOf(savedTimeString.split("/")[1])
         }
 
-        savedDateTime = GregorianCalendar(year, month, day, hour, minute).time
+        savedDateTime = GregorianCalendar(year, month, day, hour, minute)
     }
 }

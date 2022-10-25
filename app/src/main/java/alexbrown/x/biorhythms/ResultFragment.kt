@@ -44,7 +44,7 @@ class ResultFragment : Fragment() {
     }
 
     private fun calculateResults() {
-        val startDate = dateTimeStorage.savedDateTime
+        val startDate = dateTimeStorage.savedDateTime.time
         val endDate = Date()
         val results = biorhythmCalculator.calculate(startDate, endDate)
         _binding!!.textviewResult.text = "Emotional: ${results.emotionalScore} \nPhysical: ${results.physicalScore} \nIntellectual: ${results.intellectualScore}"

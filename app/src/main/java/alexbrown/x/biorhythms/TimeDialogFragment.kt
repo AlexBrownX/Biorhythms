@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TimePicker
 import androidx.fragment.app.DialogFragment
+import java.util.Calendar
 
 class TimeDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener {
 
@@ -19,7 +20,7 @@ class TimeDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener 
 
         dateTimeStorage = context?.let { DateTimeStorage(it, this.activity as MainActivity) }!!
 
-        return TimePickerDialog(activity, this, dateTimeStorage.savedDateTime.hours, dateTimeStorage.savedDateTime.minutes, DateFormat.is24HourFormat(activity))
+        return TimePickerDialog(activity, this, dateTimeStorage.savedDateTime.get(Calendar.HOUR), dateTimeStorage.savedDateTime.get(Calendar.MINUTE), DateFormat.is24HourFormat(activity))
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

@@ -20,7 +20,7 @@ class DailyResultActivity : AppCompatActivity() {
         dateTimeStorage = DateTimeStorage(baseContext)
         biorhythmCalculator = BiorhythmCalculator()
 
-        val startDate = dateTimeStorage.savedDateTime
+        val startDate = dateTimeStorage.savedDateTime.time
         val endDate = Date()
         val results = biorhythmCalculator.calculate(startDate, endDate)
 
