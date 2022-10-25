@@ -9,7 +9,7 @@ import com.github.aachartmodel.aainfographics.aaoptionsmodel.AAStyle
 import java.text.SimpleDateFormat
 import java.util.*
 
-class WeekResultActivity : AppCompatActivity() {
+class LongTermResultActivity : AppCompatActivity() {
 
     private val chartLabelDateFormatter = SimpleDateFormat("dd MMM")
 
@@ -18,17 +18,17 @@ class WeekResultActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_weekly_result)
+        setContentView(R.layout.activity_long_term_result)
 
         dateTimeStorage = DateTimeStorage(baseContext)
         biorhythmCalculator = BiorhythmCalculator()
 
-        val sizeOffset = 3
+        val sizeOffset = 15
         val startDate = dateTimeStorage.savedDateTime.time
         val endDate = Date()
         val results = biorhythmCalculator.calculate(startDate, endDate, sizeOffset)
 
-        val chartView = findViewById<AAChartView>(R.id.weekly_chart_view)
+        val chartView = findViewById<AAChartView>(R.id.long_term_chart_view)
         val chartTheme = getChartStyle()
         val chartModel = getChartModel(chartTheme, results)
         val chartOptions = getChartOptions(chartModel, chartTheme, results)
@@ -37,7 +37,8 @@ class WeekResultActivity : AppCompatActivity() {
     }
 
     private fun getChartOptions(chartModel: AAChartModel, chartTheme: AAStyle, results: Collection<CalculationResults>): AAOptions {
-        val xAxisPlotLinesArray = arrayOf(AAPlotLinesElement()
+        val xAxisPlotLinesArray = arrayOf(
+            AAPlotLinesElement()
             .color(chartTheme.color.toString())
             .dashStyle(AAChartLineDashStyleType.Solid)
             .width(2)
@@ -54,7 +55,7 @@ class WeekResultActivity : AppCompatActivity() {
     private fun getChartModel(chartTheme: AAStyle, results: Collection<CalculationResults>): AAChartModel {
         return AAChartModel()
             .chartType(AAChartType.Spline)
-            .title("Weekly Biorhythms")
+            .title("Long Term Biorhythms")
             .axesTextColor(chartTheme.color.toString())
             .titleStyle(chartTheme)
             .dataLabelsStyle(chartTheme)
@@ -63,8 +64,9 @@ class WeekResultActivity : AppCompatActivity() {
             .tooltipEnabled(false)
             .xAxisGridLineWidth(0.5)
             .yAxisGridLineWidth(0.5)
-            .yAxisMax(1)
-            .yAxisMin(-1)
+            .yAxisMax(1.25)
+            .yAxisMin(-1.25)
+            .xAxisTickInterval(3)
             .categories(results.map { calculationResults -> chartLabelDateFormatter.format(calculationResults.endDate) }.toTypedArray())
             .series(
                 arrayOf(

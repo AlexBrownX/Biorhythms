@@ -28,10 +28,6 @@ class DateTimeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        binding.buttonShowResults.setOnClickListener {
-//            //findNavController().navigate(R.id.action_DateTimeFragment_to_ResultFragment)
-//        }
-
         if (!dateTimeStorage.firstRun) {
             val dateOfBirthTextView = view.findViewById<TextView>(R.id.textview_date_time)
             dateOfBirthTextView.text = "Date of birth: ${dateFormatter.format(dateTimeStorage.savedDateTime.time)}"
@@ -41,6 +37,9 @@ class DateTimeFragment : Fragment() {
 
             val weeklyResultsButton = view.findViewById(R.id.button_show_weekly_results) as Button
             weeklyResultsButton.isEnabled = true
+
+            val longTermResultsButton = view.findViewById(R.id.button_show_long_term_results) as Button
+            longTermResultsButton.isEnabled = true
         }
     }
 

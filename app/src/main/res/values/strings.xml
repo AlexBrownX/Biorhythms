@@ -8,5 +8,6 @@
     <string name="time_of_birth">Time of birth</string>
     <string name="show_daily_results">Daily Biorhythms</string>
     <string name="show_weekly_results">Weekly Biorhythms</string>
+    <string name="show_long_term_results">Long Term Biorhythms</string>
     <string name="enter_date_and_time_of_birth">Please enter a date and time of birth</string>
 </resources>

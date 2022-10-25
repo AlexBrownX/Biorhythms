@@ -52,6 +52,9 @@ class DateTimeStorage(val context: Context, private val activity: MainActivity?)
 
         val weeklyResultsButton = activity.findViewById(R.id.button_show_weekly_results) as Button
         weeklyResultsButton.isEnabled = true
+
+        val longTermResultsButton = activity.findViewById(R.id.button_show_long_term_results) as Button
+        longTermResultsButton.isEnabled = true
     }
 
     private fun setDateTimeFromStorage() {

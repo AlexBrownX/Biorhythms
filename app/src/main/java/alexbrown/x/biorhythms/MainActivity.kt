@@ -68,4 +68,8 @@ class MainActivity : AppCompatActivity() {
     fun showWeeklyResultActivity(v: View) {
         startActivity(Intent(this, WeekResultActivity::class.java))
     }
+
+    fun showLongTermResultActivity(v: View) {
+        startActivity(Intent(this, LongTermResultActivity::class.java))
+    }
 }
