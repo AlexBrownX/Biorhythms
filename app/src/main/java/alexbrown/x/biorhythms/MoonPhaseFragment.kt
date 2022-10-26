@@ -5,24 +5,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.GregorianCalendar
 
 class MoonPhaseFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-//        if (PermissionChecker.checkSelfPermission(context!!, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
-//            println("not allowed to moon phase")
-////            requestPermissions()
-////            shouldShowRequestPermissionRationale("Internet permission is required to fetch moon phase data. No personal data is transmitted.")
-////            requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, MY_PERMISSIONS_REQUEST_READ_CONTACTS);
-//            return
-//        }
-
-    }
+    private val dateFormat = SimpleDateFormat("EEEE dd MMMM yyyy")
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val moonPhaseInstructionText = view.findViewById(R.id.textview_moon_phase_instructions) as TextView
+        moonPhaseInstructionText.text = "${moonPhaseInstructionText.text} ${dateFormat.format(GregorianCalendar().time)}"
+
         MoonPhaseTask(view)
     }
 

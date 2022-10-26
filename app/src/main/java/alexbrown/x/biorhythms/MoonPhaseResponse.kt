@@ -6,6 +6,7 @@ data class MoonPhaseResponse(
 
 data class MoonPhaseDetail(
     val phaseName: String,
-    val lighting: String,
+    val lighting: Double,
+    val isPhaseLimit: String,
     val svg: String
 )
