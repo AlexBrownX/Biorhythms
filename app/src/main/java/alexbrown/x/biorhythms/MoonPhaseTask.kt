@@ -5,6 +5,7 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.caverock.androidsvg.SVG
@@ -28,8 +29,8 @@ class MoonPhaseTask(private val view: View) {
     private val month = today.get(Calendar.MONTH) + 1
     private val year = today.get(Calendar.YEAR)
     private val size = 200
-    private val lightColor = "f69f05"
     private val shadeColor = "000000"
+    private val colors = arrayOf("f60b6a", "00f65b", "f69f05")
 
     init {
         val backgroundExecutor = Executors.newSingleThreadScheduledExecutor()
@@ -55,6 +56,9 @@ class MoonPhaseTask(private val view: View) {
 
                 val moonPhaseTextView = view.findViewById(R.id.textview_moon_phase_description) as TextView
                 moonPhaseTextView.text = "Today's moon phase: ${moonPhaseDetail.phaseName} ${formatLightingPercentage(moonPhaseDetail.lighting)}%"
+
+                val moonPhaseWebsiteButton = view.findViewById(R.id.button_moon_phase_website) as Button
+                moonPhaseWebsiteButton.visibility = View.VISIBLE
             }
         }
     }
@@ -65,8 +69,7 @@ class MoonPhaseTask(private val view: View) {
             val connection = getConnection(url)
             val jsonResponse = readResponse(connection)
             val monthMoonPhases = convertJsonToObject(jsonResponse)
-            return monthMoonPhases.phase["29"]
-//            return monthMoonPhases.phase[GregorianCalendar().get(Calendar.DATE).toString()]
+            return monthMoonPhases.phase[GregorianCalendar().get(Calendar.DATE).toString()]
         } catch (e: Exception) {
             Log.e(tag, "Error retrieving moon phase", e)
         }
@@ -97,7 +100,7 @@ class MoonPhaseTask(private val view: View) {
     }
 
     private fun getUrl(): URL {
-        val urlParams = "?lang=en&month=$month&year=$year&size=$size&lightColor=%23$lightColor&shadeColor=%23$shadeColor&texturize=false";
+        val urlParams = "?lang=en&month=$month&year=$year&size=$size&lightColor=%23${colors[(0..2).random()]}&shadeColor=%23$shadeColor&texturize=false";
         return URL("$apiUrl$urlParams")
     }
 

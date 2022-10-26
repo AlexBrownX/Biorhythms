@@ -1,9 +1,7 @@
 package alexbrown.x.biorhythms
 
 import android.content.Context
-import android.transition.Visibility
 import android.view.View
-import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import java.io.File

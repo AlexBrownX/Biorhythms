@@ -2,6 +2,7 @@ package alexbrown.x.biorhythms
 
 import alexbrown.x.biorhythms.databinding.ActivityMainBinding
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -80,5 +81,9 @@ class MainActivity : AppCompatActivity() {
 
     fun showLongTermResultActivity(v: View) {
         startActivity(Intent(this, LongTermResultActivity::class.java))
+    }
+
+    fun openMoonPhaseWebsite(v: View) {
+        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.icalendar37.net/lunar/app/")))
     }
 }
