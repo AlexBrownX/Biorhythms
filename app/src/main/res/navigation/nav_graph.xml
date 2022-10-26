@@ -3,13 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/DateTimeFragment">
+    app:startDestination="@id/BiorhythmsFragment">
+
+    <action
+        android:id="@+id/biorhythms_action"
+        app:destination="@+id/BiorhythmsFragment" />
+
+    <action
+        android:id="@+id/moon_phase_action"
+        app:destination="@+id/MoonPhaseFragment" />
 
     <fragment
-        android:id="@+id/DateTimeFragment"
-        android:name="alexbrown.x.biorhythms.HomeFragment"
-        android:label="@string/home_fragment_label"
-        tools:layout="@layout/fragment_home">
+        android:id="@+id/BiorhythmsFragment"
+        android:name="alexbrown.x.biorhythms.BiorhythmsFragment"
+        android:label="@string/biorhythms_fragment_label"
+        tools:layout="@layout/fragment_biorhythms">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/MoonPhaseFragment"
+        android:name="alexbrown.x.biorhythms.MoonPhaseFragment"
+        android:label="@string/moon_phase_fragment_label"
+        tools:layout="@layout/fragment_moon_phase">
 
     </fragment>
 

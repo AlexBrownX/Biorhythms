@@ -41,11 +41,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_about -> {
-                Toast.makeText(applicationContext,"Created by Alex Brown",Toast.LENGTH_LONG).show();
+            R.id.action_biorhythms -> {
+                findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.biorhythms_action)
                 return true
             }
             R.id.action_moon_phase -> {
+                findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.moon_phase_action)
+                return true
+            }
+            R.id.action_about -> {
+                Toast.makeText(applicationContext,"Alex Brown github.com/AlexBrownX",Toast.LENGTH_LONG).show()
                 return true
             }
             else -> super.onOptionsItemSelected(item)
