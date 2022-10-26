@@ -1,27 +1,26 @@
 package alexbrown.x.biorhythms
 
-import alexbrown.x.biorhythms.databinding.FragmentDateTimeBinding
+import alexbrown.x.biorhythms.databinding.FragmentHomeBinding
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import java.text.SimpleDateFormat
 
-class DateTimeFragment : Fragment() {
+class HomeFragment : Fragment() {
 
     private lateinit var dateTimeStorage: DateTimeStorage
     private val dateFormatter = SimpleDateFormat("dd/MM/yyyy HH:mm")
-    private var _binding: FragmentDateTimeBinding? = null
+    private var _binding: FragmentHomeBinding? = null
 
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        _binding = FragmentDateTimeBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         dateTimeStorage = context?.let { DateTimeStorage(it, this.activity as MainActivity) }!!
         return binding.root
     }

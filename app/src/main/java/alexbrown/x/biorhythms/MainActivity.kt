@@ -45,6 +45,9 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext,"Created by Alex Brown",Toast.LENGTH_LONG).show();
                 return true
             }
+            R.id.action_moon_phase -> {
+                return true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }

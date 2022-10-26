@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/DateTimeFragment"
-        android:name="alexbrown.x.biorhythms.DateTimeFragment"
-        android:label="@string/date_time_fragment_label"
-        tools:layout="@layout/fragment_date_time">
+        android:name="alexbrown.x.biorhythms.HomeFragment"
+        android:label="@string/home_fragment_label"
+        tools:layout="@layout/fragment_home">
 
     </fragment>
 
