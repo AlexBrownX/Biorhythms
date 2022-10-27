@@ -1,4 +1,4 @@
-package alexbrown.x.biorhythms
+package alexbrown.x.biorhythms.model
 
 data class MoonPhaseResponse(
     val phase: Map<String, MoonPhaseDetail>

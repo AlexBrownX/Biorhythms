@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MoonPhaseFragment">
+    tools:context=".fragments.MoonPhaseFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -29,44 +29,98 @@
             android:layout_marginTop="35dp"
             android:textAlignment="center"
             android:textSize="16sp"
-            android:text="@string/moon_phase_instructions"
+            android:text="@string/carousel_moon_phase_instructions"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageview_main_icon" />
 
-        <!-- Moon Phase Image -->
-        <ImageView
-            android:id="@+id/imageview_moon_phase"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="50dp"
-            android:contentDescription="@string/current_moon_phase"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textview_moon_phase_instructions" />
-
-        <!-- Moon Phase Description -->
-        <TextView
-            android:id="@+id/textview_moon_phase_description"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="35dp"
-            android:textAlignment="center"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageview_moon_phase" />
-
-        <!-- Moon Phase Website Button -->
-        <Button
-            android:id="@+id/button_moon_phase_website"
+        <ProgressBar
+            android:id="@+id/moon_phase_progress_bar"
+            style="?android:attr/progressBarStyleLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="35dp"
-            android:onClick="openMoonPhaseWebsite"
-            android:text="@string/moon_phase_website"
-            app:layout_constraintStart_toStartOf="parent"
-            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textview_moon_phase_description"  />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/motionLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutDescription="@xml/scene_moon_phases_carousel"
+            android:layout_marginTop="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_moon_phase_instructions"
+            tools:showPaths="true">
+
+            <androidx.constraintlayout.utils.widget.ImageFilterView
+                android:id="@+id/imageView1"
+                android:layout_width="80dp"
+                android:layout_height="300dp"
+                android:layout_marginEnd="16dp"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.utils.widget.ImageFilterView
+                android:id="@+id/imageView2"
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                android:layout_marginEnd="16dp"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/imageView3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.utils.widget.ImageFilterView
+                android:id="@+id/imageView3"
+                android:layout_width="80dp"
+                android:layout_height="300dp"
+                android:layout_marginStart="16dp"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.utils.widget.ImageFilterView
+                android:id="@+id/imageView4"
+                android:layout_width="80dp"
+                android:layout_height="300dp"
+                android:layout_marginStart="16dp"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView3"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.helper.widget.Carousel
+                android:id="@+id/carousel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:carousel_backwardTransition="@+id/backward"
+                app:carousel_firstView="@+id/imageView2"
+                app:carousel_forwardTransition="@+id/forward"
+                app:carousel_infinite="false"
+                app:carousel_nextState="@+id/next"
+                app:carousel_previousState="@+id/previous"
+                app:constraint_referenced_ids="imageView1,imageView2,imageView3,imageView4" />
+
+            <TextView
+                android:id="@+id/textview_moon_phase_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:textSize="16sp"
+                android:text="@string/loading"
+                android:textAlignment="center"
+                android:lineSpacingMultiplier="1.5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageView2" />
+
+        </androidx.constraintlayout.motion.widget.MotionLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

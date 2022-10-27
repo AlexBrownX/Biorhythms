@@ -11,22 +11,18 @@
 
     <action
         android:id="@+id/moon_phase_action"
-        app:destination="@+id/MoonPhaseFragment" />
+        app:destination="@+id/CarouselMoonPhaseFragment" />
 
     <fragment
         android:id="@+id/BiorhythmsFragment"
-        android:name="alexbrown.x.biorhythms.BiorhythmsFragment"
+        android:name="alexbrown.x.biorhythms.fragments.BiorhythmsFragment"
         android:label="@string/biorhythms_fragment_label"
-        tools:layout="@layout/fragment_biorhythms">
-
-    </fragment>
+        tools:layout="@layout/fragment_biorhythms" />
 
     <fragment
-        android:id="@+id/MoonPhaseFragment"
-        android:name="alexbrown.x.biorhythms.MoonPhaseFragment"
-        android:label="@string/moon_phase_fragment_label"
-        tools:layout="@layout/fragment_moon_phase">
-
-    </fragment>
+        android:id="@+id/CarouselMoonPhaseFragment"
+        android:name="alexbrown.x.biorhythms.fragments.MoonPhaseFragment"
+        android:label="@string/carousel_moon_phase_fragment_label"
+        tools:layout="@layout/fragment_moon_phase" />
 
 </navigation>

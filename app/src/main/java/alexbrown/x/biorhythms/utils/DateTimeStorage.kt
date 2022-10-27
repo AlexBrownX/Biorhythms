@@ -1,5 +1,7 @@
-package alexbrown.x.biorhythms
+package alexbrown.x.biorhythms.utils
 
+import alexbrown.x.biorhythms.MainActivity
+import alexbrown.x.biorhythms.R
 import android.content.Context
 import android.view.View
 import android.widget.LinearLayout

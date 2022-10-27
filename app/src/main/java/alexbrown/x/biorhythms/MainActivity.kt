@@ -1,9 +1,12 @@
 package alexbrown.x.biorhythms
 
 import alexbrown.x.biorhythms.databinding.ActivityMainBinding
+import alexbrown.x.biorhythms.fragments.DateDialogFragment
+import alexbrown.x.biorhythms.fragments.TimeDialogFragment
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -19,6 +22,12 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+
+    private val tag = "MainActivity"
+    private val aboutMe = "Alex Brown github.com/AlexBrownX"
+    private val moonPhaseWebsite = "https://www.icalendar37.net/lunar/app/"
+    private val dateDialogFragment = "DateDialogFragment"
+    private val timeDialogFragment = "TimeDialogFragment"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
@@ -46,12 +55,12 @@ class MainActivity : AppCompatActivity() {
                 findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.biorhythms_action)
                 return true
             }
-            R.id.action_moon_phase -> {
+            R.id.action_moon_phases -> {
                 findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.moon_phase_action)
                 return true
             }
             R.id.action_about -> {
-                Toast.makeText(applicationContext,"Alex Brown github.com/AlexBrownX",Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, aboutMe, Toast.LENGTH_LONG).show()
                 return true
             }
             else -> super.onOptionsItemSelected(item)
@@ -64,26 +73,32 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun showDateDialogFragment(v: View) {
-        DateDialogFragment().show(supportFragmentManager, "DateDialogFragment")
+        Log.d(tag, "Opening date dialog fragment from $v")
+        DateDialogFragment().show(supportFragmentManager, dateDialogFragment)
     }
 
     fun showTimeDialogFragment(v: View) {
-        TimeDialogFragment().show(supportFragmentManager, "TimeDialogFragment")
+        Log.d(tag, "Opening time dialog fragment from $v")
+        TimeDialogFragment().show(supportFragmentManager, timeDialogFragment)
     }
 
     fun showDailyResultActivity(v: View) {
+        Log.d(tag, "Opening daily results activity from $v")
         startActivity(Intent(this, DailyResultActivity::class.java))
     }
 
     fun showWeeklyResultActivity(v: View) {
+        Log.d(tag, "Opening weekly results activity from $v")
         startActivity(Intent(this, WeekResultActivity::class.java))
     }
 
     fun showLongTermResultActivity(v: View) {
+        Log.d(tag, "Opening long term results activity from $v")
         startActivity(Intent(this, LongTermResultActivity::class.java))
     }
 
     fun openMoonPhaseWebsite(v: View) {
-        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.icalendar37.net/lunar/app/")))
+        Log.d(tag, "Opening moon phase website from $v")
+        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(moonPhaseWebsite)))
     }
 }
