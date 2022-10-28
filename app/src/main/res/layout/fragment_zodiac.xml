@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.MoonPhaseFragment">
+    tools:context=".fragments.ZodiacFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -21,20 +21,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Moon Phase Instructions -->
+        <!-- Zodiac Instructions -->
         <TextView
-            android:id="@+id/textview_moon_phase_instructions"
+            android:id="@+id/textview_zodiac_instructions"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="35dp"
             android:textAlignment="center"
             android:textSize="16sp"
-            android:text="@string/moon_phase_instructions"
+            android:text="@string/zodiac_instructions"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageview_main_icon" />
 
         <ProgressBar
-            android:id="@+id/moon_phase_progress_bar"
+            android:id="@+id/zodiac_progress_bar"
             style="?android:attr/progressBarStyleLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
             android:layout_marginTop="25dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textview_moon_phase_instructions"
+            app:layout_constraintTop_toBottomOf="@+id/textview_zodiac_instructions"
             tools:showPaths="true">
 
             <androidx.constraintlayout.utils.widget.ImageFilterView
@@ -102,13 +102,13 @@
                 app:carousel_backwardTransition="@+id/backward"
                 app:carousel_firstView="@+id/imageView2"
                 app:carousel_forwardTransition="@+id/forward"
-                app:carousel_infinite="false"
+                app:carousel_infinite="true"
                 app:carousel_nextState="@+id/next"
                 app:carousel_previousState="@+id/previous"
                 app:constraint_referenced_ids="imageView1,imageView2,imageView3,imageView4" />
 
             <TextView
-                android:id="@+id/textview_moon_phase_info"
+                android:id="@+id/textview_zodiac_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="35dp"

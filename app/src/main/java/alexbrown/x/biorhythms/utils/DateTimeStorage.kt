@@ -10,7 +10,7 @@ import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
-class DateTimeStorage(val context: Context, private val activity: MainActivity?) {
+class DateTimeStorage(val context: Context, private val activity: MainActivity?) : java.io.Serializable {
 
     constructor(context: Context) : this(context, null)
 

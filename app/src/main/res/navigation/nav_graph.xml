@@ -3,26 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/BiorhythmsFragment">
+    app:startDestination="@id/biorhythms_fragment">
 
     <action
         android:id="@+id/biorhythms_action"
-        app:destination="@+id/BiorhythmsFragment" />
+        app:destination="@+id/biorhythms_fragment" />
 
     <action
         android:id="@+id/moon_phase_action"
-        app:destination="@+id/CarouselMoonPhaseFragment" />
+        app:destination="@+id/moon_phase_fragment" />
+
+    <action
+        android:id="@+id/zodiac_action"
+        app:destination="@+id/zodiac_fragment" />
 
     <fragment
-        android:id="@+id/BiorhythmsFragment"
+        android:id="@+id/biorhythms_fragment"
         android:name="alexbrown.x.biorhythms.fragments.BiorhythmsFragment"
         android:label="@string/biorhythms_fragment_label"
         tools:layout="@layout/fragment_biorhythms" />
 
     <fragment
-        android:id="@+id/CarouselMoonPhaseFragment"
+        android:id="@+id/moon_phase_fragment"
         android:name="alexbrown.x.biorhythms.fragments.MoonPhaseFragment"
-        android:label="@string/carousel_moon_phase_fragment_label"
+        android:label="@string/moon_phase_fragment_label"
         tools:layout="@layout/fragment_moon_phase" />
+
+    <fragment
+        android:id="@+id/zodiac_fragment"
+        android:name="alexbrown.x.biorhythms.fragments.ZodiacFragment"
+        android:label="@string/zodiac_fragment_label"
+        tools:layout="@layout/fragment_zodiac" />
 
 </navigation>

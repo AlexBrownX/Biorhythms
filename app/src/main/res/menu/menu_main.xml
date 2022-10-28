@@ -12,12 +12,18 @@
     <item
         android:id="@+id/action_moon_phases"
         android:orderInCategory="2"
-        android:title="@string/action_carousel_moon_phases"
+        android:title="@string/action_moon_phase"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_zodiac"
+        android:orderInCategory="3"
+        android:title="@string/action_zodiac"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_about"
-        android:orderInCategory="3"
+        android:orderInCategory="4"
         android:title="@string/action_about"
         app:showAsAction="never" />
 </menu>

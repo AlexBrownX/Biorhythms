@@ -59,6 +59,10 @@ class MainActivity : AppCompatActivity() {
                 findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.moon_phase_action)
                 return true
             }
+            R.id.action_zodiac -> {
+                findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.zodiac_action)
+                return true
+            }
             R.id.action_about -> {
                 Toast.makeText(applicationContext, aboutMe, Toast.LENGTH_LONG).show()
                 return true
