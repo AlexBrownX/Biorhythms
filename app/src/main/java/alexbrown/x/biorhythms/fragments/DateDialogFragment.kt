@@ -1,6 +1,5 @@
 package alexbrown.x.biorhythms.fragments
 
-import alexbrown.x.biorhythms.MainActivity
 import alexbrown.x.biorhythms.R
 import alexbrown.x.biorhythms.utils.DateTimeStorage
 import android.app.DatePickerDialog
@@ -13,16 +12,17 @@ import android.widget.DatePicker
 import androidx.fragment.app.DialogFragment
 import java.util.*
 
-class DateDialogFragment : DialogFragment(), DatePickerDialog.OnDateSetListener {
-
-    private lateinit var dateTimeStorage: DateTimeStorage
+class DateDialogFragment(private val dateTimeStorage: DateTimeStorage) : DialogFragment(), DatePickerDialog.OnDateSetListener {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         super.onCreate(savedInstanceState)
 
-        dateTimeStorage = context?.let { DateTimeStorage(it, this.activity as MainActivity) }!!
-
-        return DatePickerDialog(requireContext(), this, dateTimeStorage.savedDateTime.get(Calendar.YEAR), dateTimeStorage.savedDateTime.get(Calendar.MONTH), dateTimeStorage.savedDateTime.get(Calendar.DATE))
+        return DatePickerDialog(
+            requireContext(),
+            this,
+            dateTimeStorage.savedDateTime.get(Calendar.YEAR),
+            dateTimeStorage.savedDateTime.get(Calendar.MONTH),
+            dateTimeStorage.savedDateTime.get(Calendar.DATE))
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

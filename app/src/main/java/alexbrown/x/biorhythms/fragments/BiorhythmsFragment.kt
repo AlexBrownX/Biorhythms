@@ -5,27 +5,48 @@ import alexbrown.x.biorhythms.R
 import alexbrown.x.biorhythms.databinding.FragmentBiorhythmsBinding
 import alexbrown.x.biorhythms.utils.DateTimeStorage
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import java.text.SimpleDateFormat
 
 class BiorhythmsFragment : Fragment() {
 
     private lateinit var dateTimeStorage: DateTimeStorage
+
     private val dateFormatter = SimpleDateFormat("dd/MM/yyyy HH:mm")
     private var _binding: FragmentBiorhythmsBinding? = null
 
-    // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentBiorhythmsBinding.inflate(inflater, container, false)
         dateTimeStorage = context?.let { DateTimeStorage(it, this.activity as MainActivity) }!!
+        bindButtons()
+
         return binding.root
+    }
+
+    private fun bindButtons() {
+        binding.buttonDate.setOnClickListener { view ->
+            Log.d(tag, "Opening date dialog fragment from $view")
+            DateDialogFragment(dateTimeStorage).show(childFragmentManager, "DateDialogFragment")
+        }
+
+        binding.buttonTime.setOnClickListener { view ->
+            Log.d(tag, "Opening time dialog fragment from $view")
+            TimeDialogFragment(dateTimeStorage).show(childFragmentManager, "TimeDialogFragment")
+        }
+
+        binding.buttonShowDailyResults.setOnClickListener { view ->
+            Log.d(tag, "Opening daily result fragment from $view")
+            findNavController().navigate(R.id.daily_result_action)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

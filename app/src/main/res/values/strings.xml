@@ -5,6 +5,7 @@
     <string name="action_moon_phase">Moon Phase</string>
     <string name="action_zodiac">Zodiac</string>
     <string name="biorhythms_fragment_label">Biorhythms</string>
+    <string name="daily_result_fragment_label">Daily Biorhythms</string>
     <string name="moon_phase_fragment_label">Moon Phase</string>
     <string name="zodiac_fragment_label">Zodiac</string>
     <string name="back">Back</string>

@@ -1,33 +1,45 @@
-package alexbrown.x.biorhythms
+package alexbrown.x.biorhythms.fragments
 
+import alexbrown.x.biorhythms.R
 import alexbrown.x.biorhythms.model.CalculationResults
 import alexbrown.x.biorhythms.utils.BiorhythmCalculator
 import alexbrown.x.biorhythms.utils.DateTimeStorage
 import android.content.res.Configuration
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.viewbinding.ViewBindings
 import com.github.aachartmodel.aainfographics.aachartcreator.*
 import com.github.aachartmodel.aainfographics.aaoptionsmodel.AAPlotLinesElement
 import com.github.aachartmodel.aainfographics.aaoptionsmodel.AAStyle
 import java.util.*
 
-class DailyResultActivity : AppCompatActivity() {
+class DailyResultFragment : Fragment() {
 
     private lateinit var dateTimeStorage: DateTimeStorage
     private lateinit var biorhythmCalculator: BiorhythmCalculator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_daily_result)
 
-        dateTimeStorage = DateTimeStorage(baseContext)
+        dateTimeStorage = DateTimeStorage(requireContext())
         biorhythmCalculator = BiorhythmCalculator()
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_daily_result, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val startDate = dateTimeStorage.savedDateTime.time
         val endDate = Date()
         val results = biorhythmCalculator.calculate(startDate, endDate)
 
-        val chartView = findViewById<AAChartView>(R.id.daily_chart_view)
+        val chartView = view.findViewById<AAChartView>(R.id.daily_chart_view)
         val chartTheme = getChartStyle()
         val chartModel = getChartModel(chartTheme, results)
         val chartOptions = getChartOptions(chartModel, chartTheme)
@@ -38,11 +50,11 @@ class DailyResultActivity : AppCompatActivity() {
     private fun getChartOptions(chartModel: AAChartModel, chartTheme: AAStyle): AAOptions {
         val yAxisPlotLinesArray = arrayOf(
             AAPlotLinesElement()
-            .color(chartTheme.color.toString())
-            .dashStyle(AAChartLineDashStyleType.Solid)
-            .width(2)
-            .value(0)
-            .zIndex(1)
+                .color(chartTheme.color.toString())
+                .dashStyle(AAChartLineDashStyleType.Solid)
+                .width(2)
+                .value(0)
+                .zIndex(1)
         )
 
         val aaOptions = chartModel.aa_toAAOptions()
@@ -54,7 +66,6 @@ class DailyResultActivity : AppCompatActivity() {
     private fun getChartModel(chartTheme: AAStyle, results: CalculationResults): AAChartModel {
         return AAChartModel()
             .chartType(AAChartType.Column)
-            .title("Daily Biorhythms")
             .axesTextColor(chartTheme.color.toString())
             .titleStyle(chartTheme)
             .dataLabelsStyle(chartTheme)
@@ -86,7 +97,7 @@ class DailyResultActivity : AppCompatActivity() {
                         .color("#f69f05")
                         .borderWidth(1)
                         .borderColor(chartTheme.color.toString())
-                    )
+                )
             )
     }
 

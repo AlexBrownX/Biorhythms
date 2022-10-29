@@ -76,21 +76,6 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    fun showDateDialogFragment(v: View) {
-        Log.d(tag, "Opening date dialog fragment from $v")
-        DateDialogFragment().show(supportFragmentManager, dateDialogFragment)
-    }
-
-    fun showTimeDialogFragment(v: View) {
-        Log.d(tag, "Opening time dialog fragment from $v")
-        TimeDialogFragment().show(supportFragmentManager, timeDialogFragment)
-    }
-
-    fun showDailyResultActivity(v: View) {
-        Log.d(tag, "Opening daily results activity from $v")
-        startActivity(Intent(this, DailyResultActivity::class.java))
-    }
-
     fun showWeeklyResultActivity(v: View) {
         Log.d(tag, "Opening weekly results activity from $v")
         startActivity(Intent(this, WeekResultActivity::class.java))

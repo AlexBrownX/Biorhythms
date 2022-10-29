@@ -50,7 +50,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
-                android:onClick="showDateDialogFragment"
                 android:text="@string/date_of_birth" />
 
             <!-- Time of birth picker -->
@@ -60,7 +59,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
-                android:onClick="showTimeDialogFragment"
                 android:text="@string/time_of_birth" />
         </LinearLayout>
 
@@ -130,8 +128,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginEnd="8dp"
-                android:text="@string/show_daily_results"
-                android:onClick="showDailyResultActivity" />
+                android:text="@string/show_daily_results" />
 
             <!-- Daily information -->
             <TextView

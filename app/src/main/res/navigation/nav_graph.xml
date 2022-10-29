@@ -10,6 +10,10 @@
         app:destination="@+id/biorhythms_fragment" />
 
     <action
+        android:id="@+id/daily_result_action"
+        app:destination="@+id/daily_result_fragment" />
+
+    <action
         android:id="@+id/moon_phase_action"
         app:destination="@+id/moon_phase_fragment" />
 
@@ -17,11 +21,18 @@
         android:id="@+id/zodiac_action"
         app:destination="@+id/zodiac_fragment" />
 
+
     <fragment
         android:id="@+id/biorhythms_fragment"
         android:name="alexbrown.x.biorhythms.fragments.BiorhythmsFragment"
         android:label="@string/biorhythms_fragment_label"
         tools:layout="@layout/fragment_biorhythms" />
+
+    <fragment
+        android:id="@+id/daily_result_fragment"
+        android:name="alexbrown.x.biorhythms.fragments.DailyResultFragment"
+        android:label="@string/daily_result_fragment_label"
+        tools:layout="@layout/fragment_daily_result" />
 
     <fragment
         android:id="@+id/moon_phase_fragment"
