@@ -1,8 +1,6 @@
-package alexbrown.x.biorhythms.utils
+package alexbrown.x.biorhythms.moonphase
 
 import alexbrown.x.biorhythms.R
-import alexbrown.x.biorhythms.model.MoonPhaseDetail
-import alexbrown.x.biorhythms.model.MoonPhaseResponse
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.PictureDrawable
 import android.os.Handler

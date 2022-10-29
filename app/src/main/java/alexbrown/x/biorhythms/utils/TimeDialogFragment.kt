@@ -1,4 +1,4 @@
-package alexbrown.x.biorhythms.fragments
+package alexbrown.x.biorhythms.utils
 
 import alexbrown.x.biorhythms.R
 import alexbrown.x.biorhythms.utils.DateTimeStorage

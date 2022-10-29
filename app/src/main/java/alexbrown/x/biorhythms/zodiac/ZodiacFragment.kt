@@ -1,8 +1,7 @@
-package alexbrown.x.biorhythms.fragments
+package alexbrown.x.biorhythms.zodiac
 
 import alexbrown.x.biorhythms.MainActivity
 import alexbrown.x.biorhythms.R
-import alexbrown.x.biorhythms.utils.CarouselZodiacTask
 import alexbrown.x.biorhythms.utils.DateTimeStorage
 import android.os.Bundle
 import androidx.fragment.app.Fragment

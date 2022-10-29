@@ -1,4 +1,4 @@
-package alexbrown.x.biorhythms.model
+package alexbrown.x.biorhythms.biorhythm
 
 import java.math.BigDecimal
 import java.util.Date

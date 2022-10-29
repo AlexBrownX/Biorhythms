@@ -1,8 +1,6 @@
-package alexbrown.x.biorhythms.fragments
+package alexbrown.x.biorhythms.biorhythm
 
 import alexbrown.x.biorhythms.R
-import alexbrown.x.biorhythms.model.CalculationResults
-import alexbrown.x.biorhythms.utils.BiorhythmCalculator
 import alexbrown.x.biorhythms.utils.DateTimeStorage
 import android.content.res.Configuration
 import android.os.Bundle
@@ -10,13 +8,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.viewbinding.ViewBindings
 import com.github.aachartmodel.aainfographics.aachartcreator.*
 import com.github.aachartmodel.aainfographics.aaoptionsmodel.AAPlotLinesElement
 import com.github.aachartmodel.aainfographics.aaoptionsmodel.AAStyle
+import java.text.SimpleDateFormat
 import java.util.*
 
-class DailyResultFragment : Fragment() {
+class WeeklyResultFragment : Fragment() {
+
+    private val chartLabelDateFormatter = SimpleDateFormat("dd MMM")
 
     private lateinit var dateTimeStorage: DateTimeStorage
     private lateinit var biorhythmCalculator: BiorhythmCalculator
@@ -29,71 +29,72 @@ class DailyResultFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_daily_result, container, false)
+        return inflater.inflate(R.layout.fragment_weekly_result, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val sizeOffset = 3
         val startDate = dateTimeStorage.savedDateTime.time
         val endDate = Date()
-        val results = biorhythmCalculator.calculate(startDate, endDate)
+        val results = biorhythmCalculator.calculate(startDate, endDate, sizeOffset)
 
-        val chartView = view.findViewById<AAChartView>(R.id.daily_chart_view)
+        val chartView = view.findViewById<AAChartView>(R.id.weekly_chart_view)
         val chartTheme = getChartStyle()
         val chartModel = getChartModel(chartTheme, results)
-        val chartOptions = getChartOptions(chartModel, chartTheme)
+        val chartOptions = getChartOptions(chartModel, chartTheme, results)
 
         chartView.aa_drawChartWithChartOptions(chartOptions)
     }
 
-    private fun getChartOptions(chartModel: AAChartModel, chartTheme: AAStyle): AAOptions {
-        val yAxisPlotLinesArray = arrayOf(
+    private fun getChartOptions(chartModel: AAChartModel, chartTheme: AAStyle, results: Collection<CalculationResults>): AAOptions {
+        val xAxisPlotLinesArray = arrayOf(
             AAPlotLinesElement()
-                .color(chartTheme.color.toString())
-                .dashStyle(AAChartLineDashStyleType.Solid)
-                .width(2)
-                .value(0)
-                .zIndex(1)
+            .color(chartTheme.color.toString())
+            .dashStyle(AAChartLineDashStyleType.Solid)
+            .width(2)
+            .value(results.size/2)
+            .zIndex(1)
         )
 
         val aaOptions = chartModel.aa_toAAOptions()
-        aaOptions.yAxis?.plotLines(yAxisPlotLinesArray)
+        aaOptions.xAxis?.plotLines(xAxisPlotLinesArray)
 
         return aaOptions
     }
 
-    private fun getChartModel(chartTheme: AAStyle, results: CalculationResults): AAChartModel {
+    private fun getChartModel(chartTheme: AAStyle, results: Collection<CalculationResults>): AAChartModel {
         return AAChartModel()
-            .chartType(AAChartType.Column)
+            .chartType(AAChartType.Spline)
             .axesTextColor(chartTheme.color.toString())
             .titleStyle(chartTheme)
             .dataLabelsStyle(chartTheme)
             .backgroundColor(chartTheme.backgroundColor.toString())
-            .dataLabelsEnabled(true)
-            .xAxisLabelsEnabled(false)
+            .dataLabelsEnabled(false)
             .tooltipEnabled(false)
             .xAxisGridLineWidth(0.5)
             .yAxisGridLineWidth(0.5)
             .yAxisMax(1)
             .yAxisMin(-1)
+            .categories(results.map { calculationResults -> chartLabelDateFormatter.format(calculationResults.endDate) }.toTypedArray())
             .series(
                 arrayOf(
                     AASeriesElement()
                         .name("Physical")
-                        .data(arrayOf(results.physicalScore))
+                        .data(results.map { calculationResults -> calculationResults.physicalScore }.toTypedArray())
                         .color("#f60b6a")
                         .borderWidth(1)
                         .borderColor(chartTheme.color.toString()),
                     AASeriesElement()
                         .name("Emotional")
-                        .data(arrayOf(results.emotionalScore))
+                        .data(results.map { calculationResults -> calculationResults.emotionalScore }.toTypedArray())
                         .color("#00f65b")
                         .borderWidth(1)
                         .borderColor(chartTheme.color.toString()),
                     AASeriesElement()
                         .name("Intellectual")
-                        .data(arrayOf(results.intellectualScore))
+                        .data(results.map { calculationResults -> calculationResults.intellectualScore }.toTypedArray())
                         .color("#f69f05")
                         .borderWidth(1)
                         .borderColor(chartTheme.color.toString())

@@ -1,6 +1,5 @@
-package alexbrown.x.biorhythms.utils
+package alexbrown.x.biorhythms.biorhythm
 
-import alexbrown.x.biorhythms.model.CalculationResults
 import java.math.BigDecimal
 import java.math.RoundingMode
 import java.util.Calendar

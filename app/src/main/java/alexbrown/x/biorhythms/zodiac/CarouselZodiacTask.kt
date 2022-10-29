@@ -1,8 +1,7 @@
-package alexbrown.x.biorhythms.utils
+package alexbrown.x.biorhythms.zodiac
 
 import alexbrown.x.biorhythms.R
-import alexbrown.x.biorhythms.model.Zodiac
-import alexbrown.x.biorhythms.model.ZodiacBound
+import alexbrown.x.biorhythms.utils.DateTimeStorage
 import android.content.res.Configuration
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.PictureDrawable

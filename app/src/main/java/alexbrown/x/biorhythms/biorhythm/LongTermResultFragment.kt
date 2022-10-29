@@ -1,8 +1,6 @@
-package alexbrown.x.biorhythms.fragments
+package alexbrown.x.biorhythms.biorhythm
 
 import alexbrown.x.biorhythms.R
-import alexbrown.x.biorhythms.model.CalculationResults
-import alexbrown.x.biorhythms.utils.BiorhythmCalculator
 import alexbrown.x.biorhythms.utils.DateTimeStorage
 import android.content.res.Configuration
 import android.os.Bundle
@@ -16,9 +14,9 @@ import com.github.aachartmodel.aainfographics.aaoptionsmodel.AAStyle
 import java.text.SimpleDateFormat
 import java.util.*
 
-class WeeklyResultFragment : Fragment() {
+class LongTermResultFragment : Fragment() {
 
-    private val chartLabelDateFormatter = SimpleDateFormat("dd MMM")
+    private val dateFormat = SimpleDateFormat("dd MMM")
 
     private lateinit var dateTimeStorage: DateTimeStorage
     private lateinit var biorhythmCalculator: BiorhythmCalculator
@@ -31,18 +29,18 @@ class WeeklyResultFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_weekly_result, container, false)
+        return inflater.inflate(R.layout.fragment_long_term_result, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val sizeOffset = 3
+        val sizeOffset = 15
         val startDate = dateTimeStorage.savedDateTime.time
         val endDate = Date()
         val results = biorhythmCalculator.calculate(startDate, endDate, sizeOffset)
 
-        val chartView = view.findViewById<AAChartView>(R.id.weekly_chart_view)
+        val chartView = view.findViewById<AAChartView>(R.id.long_term_chart_view)
         val chartTheme = getChartStyle()
         val chartModel = getChartModel(chartTheme, results)
         val chartOptions = getChartOptions(chartModel, chartTheme, results)
@@ -53,11 +51,11 @@ class WeeklyResultFragment : Fragment() {
     private fun getChartOptions(chartModel: AAChartModel, chartTheme: AAStyle, results: Collection<CalculationResults>): AAOptions {
         val xAxisPlotLinesArray = arrayOf(
             AAPlotLinesElement()
-            .color(chartTheme.color.toString())
-            .dashStyle(AAChartLineDashStyleType.Solid)
-            .width(2)
-            .value(results.size/2)
-            .zIndex(1)
+                .color(chartTheme.color.toString())
+                .dashStyle(AAChartLineDashStyleType.Solid)
+                .width(2)
+                .value(results.size/2)
+                .zIndex(1)
         )
 
         val aaOptions = chartModel.aa_toAAOptions()
@@ -77,9 +75,10 @@ class WeeklyResultFragment : Fragment() {
             .tooltipEnabled(false)
             .xAxisGridLineWidth(0.5)
             .yAxisGridLineWidth(0.5)
-            .yAxisMax(1)
-            .yAxisMin(-1)
-            .categories(results.map { calculationResults -> chartLabelDateFormatter.format(calculationResults.endDate) }.toTypedArray())
+            .yAxisMax(1.25)
+            .yAxisMin(-1.25)
+            .xAxisTickInterval(3)
+            .categories(results.map { calculationResults -> dateFormat.format(calculationResults.endDate) }.toTypedArray())
             .series(
                 arrayOf(
                     AASeriesElement()

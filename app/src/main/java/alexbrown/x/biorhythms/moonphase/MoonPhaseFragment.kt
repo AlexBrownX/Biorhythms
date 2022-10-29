@@ -1,7 +1,6 @@
-package alexbrown.x.biorhythms.fragments
+package alexbrown.x.biorhythms.moonphase
 
 import alexbrown.x.biorhythms.R
-import alexbrown.x.biorhythms.utils.CarouselMoonPhaseTask
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater

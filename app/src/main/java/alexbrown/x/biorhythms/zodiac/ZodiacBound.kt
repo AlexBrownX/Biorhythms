@@ -1,4 +1,4 @@
-package alexbrown.x.biorhythms.model
+package alexbrown.x.biorhythms.zodiac
 
 import java.util.GregorianCalendar
 

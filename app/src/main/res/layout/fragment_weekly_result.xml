@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.WeeklyResultFragment">
+    tools:context=".biorhythm.WeeklyResultFragment">
 
     <com.github.aachartmodel.aainfographics.aachartcreator.AAChartView
         android:id="@+id/weekly_chart_view"

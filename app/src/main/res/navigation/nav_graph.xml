@@ -31,37 +31,37 @@
 
     <fragment
         android:id="@+id/biorhythms_fragment"
-        android:name="alexbrown.x.biorhythms.fragments.BiorhythmsFragment"
+        android:name="alexbrown.x.biorhythms.biorhythm.BiorhythmsFragment"
         android:label="@string/biorhythms_fragment_label"
         tools:layout="@layout/fragment_biorhythms" />
 
     <fragment
         android:id="@+id/daily_result_fragment"
-        android:name="alexbrown.x.biorhythms.fragments.DailyResultFragment"
+        android:name="alexbrown.x.biorhythms.biorhythm.DailyResultFragment"
         android:label="@string/daily_result_fragment_label"
         tools:layout="@layout/fragment_daily_result" />
 
     <fragment
         android:id="@+id/weekly_result_fragment"
-        android:name="alexbrown.x.biorhythms.fragments.WeeklyResultFragment"
+        android:name="alexbrown.x.biorhythms.biorhythm.WeeklyResultFragment"
         android:label="@string/weekly_result_fragment_label"
         tools:layout="@layout/fragment_weekly_result" />
 
     <fragment
         android:id="@+id/long_term_result_fragment"
-        android:name="alexbrown.x.biorhythms.fragments.LongTermResultFragment"
+        android:name="alexbrown.x.biorhythms.biorhythm.LongTermResultFragment"
         android:label="@string/long_term_result_fragment_label"
         tools:layout="@layout/fragment_long_term_result" />
 
     <fragment
         android:id="@+id/moon_phase_fragment"
-        android:name="alexbrown.x.biorhythms.fragments.MoonPhaseFragment"
+        android:name="alexbrown.x.biorhythms.moonphase.MoonPhaseFragment"
         android:label="@string/moon_phase_fragment_label"
         tools:layout="@layout/fragment_moon_phase" />
 
     <fragment
         android:id="@+id/zodiac_fragment"
-        android:name="alexbrown.x.biorhythms.fragments.ZodiacFragment"
+        android:name="alexbrown.x.biorhythms.zodiac.ZodiacFragment"
         android:label="@string/zodiac_fragment_label"
         tools:layout="@layout/fragment_zodiac" />
 
