@@ -17,11 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
-    private val tag = "MainActivity"
     private val aboutMe = "Alex Brown github.com/AlexBrownX"
-    private val moonPhaseWebsite = "https://www.icalendar37.net/lunar/app/"
-    private val dateDialogFragment = "DateDialogFragment"
-    private val timeDialogFragment = "TimeDialogFragment"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
@@ -38,7 +34,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
@@ -69,9 +64,4 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
-
-//    fun openMoonPhaseWebsite(v: View) {
-//        Log.d(tag, "Opening moon phase website from $v")
-//        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(moonPhaseWebsite)))
-//    }
 }

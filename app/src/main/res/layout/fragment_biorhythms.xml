@@ -23,7 +23,7 @@
 
         <!-- Instructions -->
         <TextView
-            android:id="@+id/textview_instructions"
+            android:id="@+id/textview_biorhythms_introduction"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="25dp"
@@ -41,7 +41,7 @@
             android:layout_marginTop="25dp"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textview_instructions">
+            app:layout_constraintTop_toBottomOf="@+id/textview_biorhythms_introduction">
 
             <!-- Date of birth picker -->
             <Button
@@ -50,6 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
+                style="?android:attr/buttonBarStyle"
                 android:text="@string/date_of_birth" />
 
             <!-- Time of birth picker -->
@@ -59,6 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
+                style="?android:attr/buttonBarStyle"
                 android:text="@string/time_of_birth" />
         </LinearLayout>
 
@@ -159,8 +161,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginEnd="8dp"
-                android:text="@string/show_weekly_results"
-                android:onClick="showWeeklyResultActivity" />
+                android:text="@string/show_weekly_results" />
 
             <!-- Weekly information -->
             <TextView
@@ -191,8 +192,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginEnd="8dp"
-                android:text="@string/show_long_term_results"
-                android:onClick="showLongTermResultActivity" />
+                android:text="@string/show_long_term_results" />
 
             <!-- Long term information -->
             <TextView

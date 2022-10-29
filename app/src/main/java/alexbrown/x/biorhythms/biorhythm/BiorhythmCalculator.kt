@@ -43,7 +43,7 @@ class BiorhythmCalculator {
 
     private fun getNumberOfDaysAlive(startDate: Date, endDate: Date): Long {
         val differentInMilliseconds = abs(endDate.time - startDate.time)
-        return TimeUnit.DAYS.convert(differentInMilliseconds, TimeUnit.MILLISECONDS);
+        return TimeUnit.DAYS.convert(differentInMilliseconds, TimeUnit.MILLISECONDS)
     }
 
     private fun getDateRange(endDate: Date, daysOffset: Int): Collection<Date> {
@@ -51,7 +51,7 @@ class BiorhythmCalculator {
 
         for  (offset in daysOffset downTo 1) {
             val calendar = GregorianCalendar()
-            calendar.setTime(endDate)
+            calendar.time = endDate
             calendar.add(Calendar.DATE, -offset)
             dates.add(calendar.time)
         }
@@ -60,7 +60,7 @@ class BiorhythmCalculator {
 
         for  (offset in 1 .. daysOffset) {
             val calendar = GregorianCalendar()
-            calendar.setTime(endDate)
+            calendar.time = endDate
             calendar.add(Calendar.DATE, offset)
             dates.add(calendar.time)
         }

@@ -26,7 +26,7 @@ class BiorhythmsFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentBiorhythmsBinding.inflate(inflater, container, false)
         dateTimeStorage = context?.let { DateTimeStorage(it, this.activity as MainActivity) }!!
         bindButtons()

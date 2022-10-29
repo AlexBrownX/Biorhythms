@@ -23,7 +23,7 @@
 
         <!-- Zodiac Instructions -->
         <TextView
-            android:id="@+id/textview_zodiac_instructions"
+            android:id="@+id/textview_zodiac_introduction"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="35dp"
@@ -34,7 +34,7 @@
             app:layout_constraintTop_toBottomOf="@+id/imageview_main_icon" />
 
         <ProgressBar
-            android:id="@+id/zodiac_progress_bar"
+            android:id="@+id/progress_bar_zodiac"
             style="?android:attr/progressBarStyleLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,18 +44,18 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.motion.widget.MotionLayout
-            android:id="@+id/motionLayout"
+            android:id="@+id/motion_layout_zodiac"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layoutDescription="@xml/scene_carousel"
             android:layout_marginTop="25dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textview_zodiac_instructions"
+            app:layout_constraintTop_toBottomOf="@+id/textview_zodiac_introduction"
             tools:showPaths="true">
 
             <androidx.constraintlayout.utils.widget.ImageFilterView
-                android:id="@+id/imageView1"
+                android:id="@+id/imageview_1"
                 android:layout_width="80dp"
                 android:layout_height="300dp"
                 android:layout_marginEnd="16dp"
@@ -65,18 +65,18 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.utils.widget.ImageFilterView
-                android:id="@+id/imageView2"
+                android:id="@+id/imageview_2"
                 android:layout_width="0dp"
                 android:layout_height="300dp"
                 android:layout_marginEnd="16dp"
                 android:scaleType="fitCenter"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/imageView3"
+                app:layout_constraintEnd_toStartOf="@id/imageview_3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.utils.widget.ImageFilterView
-                android:id="@+id/imageView3"
+                android:id="@+id/imageview_3"
                 android:layout_width="80dp"
                 android:layout_height="300dp"
                 android:layout_marginStart="16dp"
@@ -86,29 +86,29 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.utils.widget.ImageFilterView
-                android:id="@+id/imageView4"
+                android:id="@+id/imageview_4"
                 android:layout_width="80dp"
                 android:layout_height="300dp"
                 android:layout_marginStart="16dp"
                 android:scaleType="fitCenter"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView3"
+                app:layout_constraintStart_toEndOf="@+id/imageview_3"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.helper.widget.Carousel
-                android:id="@+id/carousel"
+                android:id="@+id/carousel_zodiac"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:carousel_backwardTransition="@+id/backward"
-                app:carousel_firstView="@+id/imageView2"
+                app:carousel_firstView="@+id/imageview_2"
                 app:carousel_forwardTransition="@+id/forward"
                 app:carousel_infinite="true"
                 app:carousel_nextState="@+id/next"
                 app:carousel_previousState="@+id/previous"
-                app:constraint_referenced_ids="imageView1,imageView2,imageView3,imageView4" />
+                app:constraint_referenced_ids="imageview_1,imageview_2,imageview_3,imageview_4" />
 
             <TextView
-                android:id="@+id/textview_zodiac_info"
+                android:id="@+id/textview_zodiac_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="35dp"
@@ -118,7 +118,7 @@
                 android:lineSpacingMultiplier="1.5"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imageView2" />
+                app:layout_constraintTop_toBottomOf="@id/imageview_2" />
 
         </androidx.constraintlayout.motion.widget.MotionLayout>
 

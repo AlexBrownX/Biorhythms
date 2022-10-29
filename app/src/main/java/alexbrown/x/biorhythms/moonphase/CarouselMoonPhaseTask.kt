@@ -43,9 +43,9 @@ class CarouselMoonPhaseTask(private val view: View) {
         val handler = Handler(Looper.getMainLooper())
 
         backgroundExecutor.execute {
-            val carousel = view.findViewById<Carousel>(R.id.carousel)
+            val carousel = view.findViewById<Carousel>(R.id.carousel_moon_phase)
             val progressBar = view.findViewById<ProgressBar>(R.id.moon_phase_progress_bar)
-            val moonPhaseTextView = view.findViewById<TextView>(R.id.textview_moon_phase_info)
+            val moonPhaseTextView = view.findViewById<TextView>(R.id.textview_moon_phase_name)
             val moonPhaseDetails = requestMoonPhaseData()
             val drawables = getDrawables(moonPhaseDetails!!)
 
@@ -77,7 +77,7 @@ class CarouselMoonPhaseTask(private val view: View) {
             }
 
             override fun onNewItem(index: Int) {
-                val moonPhaseTextView = view.findViewById<TextView>(R.id.textview_moon_phase_info)
+                val moonPhaseTextView = view.findViewById<TextView>(R.id.textview_moon_phase_name)
                 moonPhaseTextView.text = getMoonPhaseText(moonPhaseDetails, index)
             }
         })
@@ -138,7 +138,7 @@ class CarouselMoonPhaseTask(private val view: View) {
             val response = StringBuilder()
             var responseLine: String?
 
-            while (bufferedReader.readLine().also { it -> responseLine = it } != null) {
+            while (bufferedReader.readLine().also { responseLine = it } != null) {
                 response.append(responseLine!!.trim { it <= ' ' })
             }
 
@@ -156,7 +156,7 @@ class CarouselMoonPhaseTask(private val view: View) {
     }
 
     private fun getUrl(): URL {
-        val urlParams = "?lang=en&month=$month&year=$year&size=$size&lightColor=%23${colors[(0..2).random()]}&shadeColor=%23$shadeColor&texturize=false";
+        val urlParams = "?lang=en&month=$month&year=$year&size=$size&lightColor=%23${colors[(0..2).random()]}&shadeColor=%23$shadeColor&texturize=false"
         return URL("$apiUrl$urlParams")
     }
 

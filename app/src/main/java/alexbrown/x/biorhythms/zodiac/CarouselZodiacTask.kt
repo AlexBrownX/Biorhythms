@@ -19,7 +19,6 @@ import java.util.concurrent.Executors
 
 class CarouselZodiacTask(private val view: View, private val dateTimeStorage: DateTimeStorage) {
 
-    private val tag = "CarouselZodiacTask"
     private val dateFormat = SimpleDateFormat("dd MMMM")
     private val colors = arrayOf("#f60b6a", "#00f65b", "#f69f05")
 
@@ -100,9 +99,9 @@ class CarouselZodiacTask(private val view: View, private val dateTimeStorage: Da
         val handler = Handler(Looper.getMainLooper())
 
         backgroundExecutor.execute {
-            val carousel = view.findViewById<Carousel>(R.id.carousel)
-            val progressBar = view.findViewById<ProgressBar>(R.id.zodiac_progress_bar)
-            val zodiacTextView = view.findViewById<TextView>(R.id.textview_zodiac_info)
+            val carousel = view.findViewById<Carousel>(R.id.carousel_zodiac)
+            val progressBar = view.findViewById<ProgressBar>(R.id.progress_bar_zodiac)
+            val zodiacTextView = view.findViewById<TextView>(R.id.textview_zodiac_name)
             val drawables = getDrawables()
             val birthZodiacBound = getBirthZodiacBound()
 
@@ -131,7 +130,7 @@ class CarouselZodiacTask(private val view: View, private val dateTimeStorage: Da
             override fun onNewItem(index: Int) {
                 val zodiacBound = getZodiacBoundFromIndex(index)
 
-                val zodiacTextView = view.findViewById<TextView>(R.id.textview_zodiac_info)
+                val zodiacTextView = view.findViewById<TextView>(R.id.textview_zodiac_name)
                 zodiacTextView.text = "${zodiacBound!!.zodiac.zodiacName}\n${dateFormat.format(zodiacBound.startDate.time)} - ${dateFormat.format(zodiacBound.endDate.time)}"
             }
         })
