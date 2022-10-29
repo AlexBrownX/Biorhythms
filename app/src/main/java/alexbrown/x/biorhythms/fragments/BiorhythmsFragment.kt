@@ -47,6 +47,16 @@ class BiorhythmsFragment : Fragment() {
             Log.d(tag, "Opening daily result fragment from $view")
             findNavController().navigate(R.id.daily_result_action)
         }
+
+        binding.buttonShowWeeklyResults.setOnClickListener { view ->
+            Log.d(tag, "Opening weekly result fragment from $view")
+            findNavController().navigate(R.id.weekly_result_action)
+        }
+
+        binding.buttonShowLongTermResults.setOnClickListener { view ->
+            Log.d(tag, "Opening long term result fragment from $view")
+            findNavController().navigate(R.id.long_term_result_fragment)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

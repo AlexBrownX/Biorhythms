@@ -1,37 +1,48 @@
-package alexbrown.x.biorhythms
+package alexbrown.x.biorhythms.fragments
 
+import alexbrown.x.biorhythms.R
 import alexbrown.x.biorhythms.model.CalculationResults
 import alexbrown.x.biorhythms.utils.BiorhythmCalculator
 import alexbrown.x.biorhythms.utils.DateTimeStorage
 import android.content.res.Configuration
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import com.github.aachartmodel.aainfographics.aachartcreator.*
 import com.github.aachartmodel.aainfographics.aaoptionsmodel.AAPlotLinesElement
 import com.github.aachartmodel.aainfographics.aaoptionsmodel.AAStyle
 import java.text.SimpleDateFormat
 import java.util.*
 
-class LongTermResultActivity : AppCompatActivity() {
+class LongTermResultFragment : Fragment() {
 
-    private val chartLabelDateFormatter = SimpleDateFormat("dd MMM")
+    private val dateFormat = SimpleDateFormat("dd MMM")
 
     private lateinit var dateTimeStorage: DateTimeStorage
     private lateinit var biorhythmCalculator: BiorhythmCalculator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_long_term_result)
 
-        dateTimeStorage = DateTimeStorage(baseContext)
+        dateTimeStorage = DateTimeStorage(requireContext())
         biorhythmCalculator = BiorhythmCalculator()
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_long_term_result, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val sizeOffset = 15
         val startDate = dateTimeStorage.savedDateTime.time
         val endDate = Date()
         val results = biorhythmCalculator.calculate(startDate, endDate, sizeOffset)
 
-        val chartView = findViewById<AAChartView>(R.id.long_term_chart_view)
+        val chartView = view.findViewById<AAChartView>(R.id.long_term_chart_view)
         val chartTheme = getChartStyle()
         val chartModel = getChartModel(chartTheme, results)
         val chartOptions = getChartOptions(chartModel, chartTheme, results)
@@ -42,11 +53,11 @@ class LongTermResultActivity : AppCompatActivity() {
     private fun getChartOptions(chartModel: AAChartModel, chartTheme: AAStyle, results: Collection<CalculationResults>): AAOptions {
         val xAxisPlotLinesArray = arrayOf(
             AAPlotLinesElement()
-            .color(chartTheme.color.toString())
-            .dashStyle(AAChartLineDashStyleType.Solid)
-            .width(2)
-            .value(results.size/2)
-            .zIndex(1)
+                .color(chartTheme.color.toString())
+                .dashStyle(AAChartLineDashStyleType.Solid)
+                .width(2)
+                .value(results.size/2)
+                .zIndex(1)
         )
 
         val aaOptions = chartModel.aa_toAAOptions()
@@ -58,7 +69,6 @@ class LongTermResultActivity : AppCompatActivity() {
     private fun getChartModel(chartTheme: AAStyle, results: Collection<CalculationResults>): AAChartModel {
         return AAChartModel()
             .chartType(AAChartType.Spline)
-            .title("Long Term Biorhythms")
             .axesTextColor(chartTheme.color.toString())
             .titleStyle(chartTheme)
             .dataLabelsStyle(chartTheme)
@@ -70,7 +80,7 @@ class LongTermResultActivity : AppCompatActivity() {
             .yAxisMax(1.25)
             .yAxisMin(-1.25)
             .xAxisTickInterval(3)
-            .categories(results.map { calculationResults -> chartLabelDateFormatter.format(calculationResults.endDate) }.toTypedArray())
+            .categories(results.map { calculationResults -> dateFormat.format(calculationResults.endDate) }.toTypedArray())
             .series(
                 arrayOf(
                     AASeriesElement()

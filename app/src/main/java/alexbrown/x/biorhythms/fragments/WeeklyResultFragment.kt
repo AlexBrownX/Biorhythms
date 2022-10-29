@@ -1,18 +1,22 @@
-package alexbrown.x.biorhythms
+package alexbrown.x.biorhythms.fragments
 
+import alexbrown.x.biorhythms.R
 import alexbrown.x.biorhythms.model.CalculationResults
 import alexbrown.x.biorhythms.utils.BiorhythmCalculator
 import alexbrown.x.biorhythms.utils.DateTimeStorage
 import android.content.res.Configuration
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import com.github.aachartmodel.aainfographics.aachartcreator.*
 import com.github.aachartmodel.aainfographics.aaoptionsmodel.AAPlotLinesElement
 import com.github.aachartmodel.aainfographics.aaoptionsmodel.AAStyle
 import java.text.SimpleDateFormat
 import java.util.*
 
-class WeekResultActivity : AppCompatActivity() {
+class WeeklyResultFragment : Fragment() {
 
     private val chartLabelDateFormatter = SimpleDateFormat("dd MMM")
 
@@ -21,17 +25,24 @@ class WeekResultActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_weekly_result)
 
-        dateTimeStorage = DateTimeStorage(baseContext)
+        dateTimeStorage = DateTimeStorage(requireContext())
         biorhythmCalculator = BiorhythmCalculator()
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_weekly_result, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val sizeOffset = 3
         val startDate = dateTimeStorage.savedDateTime.time
         val endDate = Date()
         val results = biorhythmCalculator.calculate(startDate, endDate, sizeOffset)
 
-        val chartView = findViewById<AAChartView>(R.id.weekly_chart_view)
+        val chartView = view.findViewById<AAChartView>(R.id.weekly_chart_view)
         val chartTheme = getChartStyle()
         val chartModel = getChartModel(chartTheme, results)
         val chartOptions = getChartOptions(chartModel, chartTheme, results)
@@ -40,7 +51,8 @@ class WeekResultActivity : AppCompatActivity() {
     }
 
     private fun getChartOptions(chartModel: AAChartModel, chartTheme: AAStyle, results: Collection<CalculationResults>): AAOptions {
-        val xAxisPlotLinesArray = arrayOf(AAPlotLinesElement()
+        val xAxisPlotLinesArray = arrayOf(
+            AAPlotLinesElement()
             .color(chartTheme.color.toString())
             .dashStyle(AAChartLineDashStyleType.Solid)
             .width(2)
@@ -57,7 +69,6 @@ class WeekResultActivity : AppCompatActivity() {
     private fun getChartModel(chartTheme: AAStyle, results: Collection<CalculationResults>): AAChartModel {
         return AAChartModel()
             .chartType(AAChartType.Spline)
-            .title("Weekly Biorhythms")
             .axesTextColor(chartTheme.color.toString())
             .titleStyle(chartTheme)
             .dataLabelsStyle(chartTheme)

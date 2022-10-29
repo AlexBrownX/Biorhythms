@@ -76,18 +76,8 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    fun showWeeklyResultActivity(v: View) {
-        Log.d(tag, "Opening weekly results activity from $v")
-        startActivity(Intent(this, WeekResultActivity::class.java))
-    }
-
-    fun showLongTermResultActivity(v: View) {
-        Log.d(tag, "Opening long term results activity from $v")
-        startActivity(Intent(this, LongTermResultActivity::class.java))
-    }
-
-    fun openMoonPhaseWebsite(v: View) {
-        Log.d(tag, "Opening moon phase website from $v")
-        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(moonPhaseWebsite)))
-    }
+//    fun openMoonPhaseWebsite(v: View) {
+//        Log.d(tag, "Opening moon phase website from $v")
+//        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(moonPhaseWebsite)))
+//    }
 }
