@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import java.text.SimpleDateFormat
@@ -20,6 +21,7 @@ import java.text.SimpleDateFormat
 class BiorhythmsFragment : Fragment() {
 
     private lateinit var dateTimeStorage: DateTimeStorage
+    private lateinit var biorhythmCalculator: BiorhythmCalculator
 
     private val dateFormatter = SimpleDateFormat("dd/MM/yyyy HH:mm")
     private var _binding: FragmentBiorhythmsBinding? = null
@@ -28,13 +30,18 @@ class BiorhythmsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentBiorhythmsBinding.inflate(inflater, container, false)
+
         dateTimeStorage = context?.let { DateTimeStorage(it, this.activity as MainActivity) }!!
+        biorhythmCalculator = BiorhythmCalculator()
+
         bindButtons()
 
         return binding.root
     }
 
     private fun bindButtons() {
+        val bundle = bundleOf("DateTimeStorage" to dateTimeStorage, "BiorhythmCalculator" to biorhythmCalculator)
+
         binding.buttonDate.setOnClickListener { view ->
             Log.d(tag, "Opening date dialog fragment from $view")
             DateDialogFragment(dateTimeStorage).show(childFragmentManager, "DateDialogFragment")
@@ -47,17 +54,17 @@ class BiorhythmsFragment : Fragment() {
 
         binding.buttonShowDailyResults.setOnClickListener { view ->
             Log.d(tag, "Opening daily result fragment from $view")
-            findNavController().navigate(R.id.daily_result_action)
+            findNavController().navigate(R.id.daily_result_action, bundle)
         }
 
         binding.buttonShowWeeklyResults.setOnClickListener { view ->
             Log.d(tag, "Opening weekly result fragment from $view")
-            findNavController().navigate(R.id.weekly_result_action)
+            findNavController().navigate(R.id.weekly_result_action, bundle)
         }
 
         binding.buttonShowLongTermResults.setOnClickListener { view ->
             Log.d(tag, "Opening long term result fragment from $view")
-            findNavController().navigate(R.id.long_term_result_fragment)
+            findNavController().navigate(R.id.long_term_result_fragment, bundle)
         }
     }
 

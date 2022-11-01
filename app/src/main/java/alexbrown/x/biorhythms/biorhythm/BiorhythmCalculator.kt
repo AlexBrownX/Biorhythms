@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
 import kotlin.math.abs
 import kotlin.math.sin
 
-class BiorhythmCalculator {
+class BiorhythmCalculator : java.io.Serializable {
 
     enum class Calculation(val numberOfDays: Int) {
         PHYSICAL(23),

@@ -24,8 +24,8 @@ class WeeklyResultFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        dateTimeStorage = DateTimeStorage(requireContext())
-        biorhythmCalculator = BiorhythmCalculator()
+        dateTimeStorage = arguments?.getSerializable("DateTimeStorage") as DateTimeStorage
+        biorhythmCalculator = arguments?.getSerializable("BiorhythmCalculator") as BiorhythmCalculator
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
