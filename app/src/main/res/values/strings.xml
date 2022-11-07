@@ -1,33 +1,45 @@
 <resources>
     <string name="app_name">Biorhythms</string>
-    <string name="action_biorhythms">Biorhythms</string>
-    <string name="action_about">About</string>
-    <string name="action_moon_phase">Moon Phase</string>
-    <string name="action_zodiac">Zodiac</string>
+    <string name="app_long_name">Biorhythms &amp; Horoscope</string>
+    <string name="app_author">AlexBrownX</string>
+    <string name="app_icon">Biorhythms application icon</string>
+
+    <string name="nav_biorhythms">Biorhythms</string>
+    <string name="nav_moon_phase">Moon Phase</string>
+    <string name="nav_zodiac">Zodiac</string>
+    <string name="nav_about">About</string>
+    <string name="nav_settings">Settings</string>
+
     <string name="biorhythms_fragment_label">Biorhythms</string>
     <string name="daily_result_fragment_label">Daily Biorhythms</string>
     <string name="weekly_result_fragment_label">Weekly Biorhythms</string>
     <string name="long_term_result_fragment_label">Long Term Biorhythms</string>
-    <string name="moon_phase_fragment_label">Moon Phase</string>
-    <string name="zodiac_fragment_label">Zodiac</string>
-    <string name="back">Back</string>
-    <string name="date_of_birth">Date of birth</string>
-    <string name="time_of_birth">Time of birth</string>
-    <string name="moon_phase_website">Moon Phases Website</string>
     <string name="show_daily_results">Daily Biorhythms</string>
     <string name="show_weekly_results">Weekly Biorhythms</string>
     <string name="show_long_term_results">Long Term Biorhythms</string>
-    <string name="enter_date_and_time_of_birth">Please select your date and time of birth to enable your biorhythms</string>
     <string name="biorhythms_instructions">To view you biorhythms please select your date and time of birth using the buttons below. If you don\'t know your time of birth you don\'t need to select one and midnight will be used instead</string>
-    <string name="moon_phase_instructions">The image below is a representation of the current moon phase. You can scroll left and right to see the moon phases for the whole of the month</string>
-    <string name="zodiac_instructions">The twelve signs of the zodiac</string>
     <string name="daily_results_information">Daily biorhythms page displays a column chart with your Physical, Emotional and Intellectual biorhythms scores for today</string>
     <string name="weekly_results_information">Weekly biorhythms page displays a spline chart with your Physical, Emotional and Intellectual biorhythms scores for today, the last 3 days and next 3 days</string>
     <string name="long_term_results_information">Long term biorhythms page displays a spline chart with your Physical, Emotional and Intellectual biorhythms scores for today, the last 15 days and next 15 days</string>
-    <string name="biorhythms_icon">Biorhythms application icon</string>
+
+    <string name="moon_phase_fragment_label">Moon Phase</string>
+    <string name="moon_phase_instructions">The image below is a representation of the current moon phase. You can scroll left and right to see the moon phases for the whole of the month</string>
     <string name="current_moon_phase">Current moon phase</string>
+
+    <string name="zodiac_fragment_label">Zodiac</string>
+    <string name="zodiac_instructions">The twelve signs of the zodiac</string>
+
+    <string name="date_of_birth">Date of birth</string>
+    <string name="time_of_birth">Time of birth</string>
+    <string name="enter_date_and_time_of_birth">Please select your date and time of birth to enable your biorhythms</string>
+
+    <string name="settings_fragment_label">Settings</string>
+
+    <string name="about_fragment_label">About</string>
+
     <string name="bullet">coloured bullet icon</string>
     <string name="loading">Loading</string>
+    <string name="todo">todo</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

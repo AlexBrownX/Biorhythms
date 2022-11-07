@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group
+        android:id="@+id/primary_pages"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_biorhythms"
+            android:title="@string/nav_biorhythms" />
+
+        <item
+            android:id="@+id/nav_moon_phases"
+            android:title="@string/nav_moon_phase" />
+
+        <item
+            android:id="@+id/nav_zodiac"
+            android:title="@string/nav_zodiac" />
+
+    </group>
+
+    <group
+        android:id="@+id/secondary_pages"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_settings"
+            android:title="@string/nav_settings" />
+
+        <item
+            android:id="@+id/nav_about"
+            android:title="@string/nav_about" />
+
+    </group>
+</menu>

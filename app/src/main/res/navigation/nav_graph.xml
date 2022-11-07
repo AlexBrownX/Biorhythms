@@ -3,67 +3,67 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/biorhythms_fragment">
-
-    <action
-        android:id="@+id/biorhythms_action"
-        app:destination="@+id/biorhythms_fragment" />
-
-    <action
-        android:id="@+id/moon_phase_action"
-        app:destination="@+id/moon_phase_fragment" />
-
-    <action
-        android:id="@+id/zodiac_action"
-        app:destination="@+id/zodiac_fragment" />
+    app:startDestination="@+id/nav_biorhythms">
 
     <fragment
-        android:id="@+id/biorhythms_fragment"
+        android:id="@+id/nav_biorhythms"
         android:name="alexbrown.x.biorhythms.biorhythm.BiorhythmsFragment"
         android:label="@string/biorhythms_fragment_label"
         tools:layout="@layout/fragment_biorhythms">
 
-        <action
-            android:id="@+id/daily_result_action"
-            app:destination="@+id/daily_result_fragment" />
+            <action
+                android:id="@+id/nav_daily_layout"
+                app:destination="@+id/nav_daily_layout" />
 
-        <action
-            android:id="@+id/weekly_result_action"
-            app:destination="@+id/weekly_result_fragment" />
+            <action
+                android:id="@+id/nav_weekly_layout"
+                app:destination="@+id/nav_weekly_layout" />
 
-        <action
-            android:id="@+id/long_result_action"
-            app:destination="@+id/long_term_result_fragment" />
+            <action
+                android:id="@+id/nav_long_term_layout"
+                app:destination="@+id/nav_long_term_layout" />
     </fragment>
 
     <fragment
-        android:id="@+id/daily_result_fragment"
+        android:id="@+id/nav_daily_layout"
         android:name="alexbrown.x.biorhythms.biorhythm.DailyResultFragment"
         android:label="@string/daily_result_fragment_label"
         tools:layout="@layout/fragment_daily_result" />
 
     <fragment
-        android:id="@+id/weekly_result_fragment"
+        android:id="@+id/nav_weekly_layout"
         android:name="alexbrown.x.biorhythms.biorhythm.WeeklyResultFragment"
         android:label="@string/weekly_result_fragment_label"
         tools:layout="@layout/fragment_weekly_result" />
 
     <fragment
-        android:id="@+id/long_term_result_fragment"
+        android:id="@+id/nav_long_term_layout"
         android:name="alexbrown.x.biorhythms.biorhythm.LongTermResultFragment"
         android:label="@string/long_term_result_fragment_label"
         tools:layout="@layout/fragment_long_term_result" />
 
     <fragment
-        android:id="@+id/moon_phase_fragment"
+        android:id="@+id/nav_moon_phases"
         android:name="alexbrown.x.biorhythms.moonphase.MoonPhaseFragment"
         android:label="@string/moon_phase_fragment_label"
         tools:layout="@layout/fragment_moon_phase" />
 
     <fragment
-        android:id="@+id/zodiac_fragment"
+        android:id="@+id/nav_zodiac"
         android:name="alexbrown.x.biorhythms.zodiac.ZodiacFragment"
         android:label="@string/zodiac_fragment_label"
         tools:layout="@layout/fragment_zodiac" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="alexbrown.x.biorhythms.settings.SettingsFragment"
+        android:label="@string/settings_fragment_label"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/nav_about"
+        android:name="alexbrown.x.biorhythms.about.AboutFragment"
+        android:label="@string/about_fragment_label"
+        tools:layout="@layout/fragment_about" />
 
 </navigation>

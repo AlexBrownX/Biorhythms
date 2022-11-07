@@ -50,13 +50,13 @@ class DateTimeStorage(val context: Context, private val activity: MainActivity?)
     }
 
     private fun enableResultButtons() {
-        val daily = activity?.findViewById(R.id.daily_layout) as LinearLayout
+        val daily = activity?.findViewById(R.id.nav_daily_layout) as LinearLayout
         daily.visibility = View.VISIBLE
 
-        val weekly = activity.findViewById(R.id.weekly_layout) as LinearLayout
+        val weekly = activity.findViewById(R.id.nav_weekly_layout) as LinearLayout
         weekly.visibility = View.VISIBLE
 
-        val longTerm = activity.findViewById(R.id.long_term_layout) as LinearLayout
+        val longTerm = activity.findViewById(R.id.nav_long_term_layout) as LinearLayout
         longTerm.visibility = View.VISIBLE
     }
 

@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@mipmap/bio_icon_launcher"
-            android:contentDescription="@string/biorhythms_icon"
+            android:contentDescription="@string/app_icon"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

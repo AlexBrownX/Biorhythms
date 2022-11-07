@@ -3,8 +3,8 @@ package alexbrown.x.biorhythms.biorhythm
 import alexbrown.x.biorhythms.MainActivity
 import alexbrown.x.biorhythms.R
 import alexbrown.x.biorhythms.databinding.FragmentBiorhythmsBinding
-import alexbrown.x.biorhythms.utils.DateDialogFragment
-import alexbrown.x.biorhythms.utils.TimeDialogFragment
+import alexbrown.x.biorhythms.settings.DateDialogFragment
+import alexbrown.x.biorhythms.settings.TimeDialogFragment
 import alexbrown.x.biorhythms.utils.DateTimeStorage
 import android.os.Bundle
 import android.util.Log
@@ -54,17 +54,17 @@ class BiorhythmsFragment : Fragment() {
 
         binding.buttonShowDailyResults.setOnClickListener { view ->
             Log.d(tag, "Opening daily result fragment from $view")
-            findNavController().navigate(R.id.daily_result_action, bundle)
+            findNavController().navigate(R.id.nav_daily_layout, bundle)
         }
 
         binding.buttonShowWeeklyResults.setOnClickListener { view ->
             Log.d(tag, "Opening weekly result fragment from $view")
-            findNavController().navigate(R.id.weekly_result_action, bundle)
+            findNavController().navigate(R.id.nav_weekly_layout, bundle)
         }
 
         binding.buttonShowLongTermResults.setOnClickListener { view ->
             Log.d(tag, "Opening long term result fragment from $view")
-            findNavController().navigate(R.id.long_term_result_fragment, bundle)
+            findNavController().navigate(R.id.nav_long_term_layout, bundle)
         }
     }
 
@@ -75,13 +75,13 @@ class BiorhythmsFragment : Fragment() {
             val dateOfBirthTextView = view.findViewById<TextView>(R.id.textview_date_time)
             dateOfBirthTextView.text = "Selected date of birth: ${dateFormatter.format(dateTimeStorage.savedDateTime.time)}"
 
-            val daily = view.findViewById(R.id.daily_layout) as LinearLayout
+            val daily = view.findViewById(R.id.nav_daily_layout) as LinearLayout
             daily.visibility = View.VISIBLE
 
-            val weekly = view.findViewById(R.id.weekly_layout) as LinearLayout
+            val weekly = view.findViewById(R.id.nav_weekly_layout) as LinearLayout
             weekly.visibility = View.VISIBLE
 
-            val longTerm = view.findViewById(R.id.long_term_layout) as LinearLayout
+            val longTerm = view.findViewById(R.id.nav_long_term_layout) as LinearLayout
             longTerm.visibility = View.VISIBLE
         }
     }

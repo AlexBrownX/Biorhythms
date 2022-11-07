@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@mipmap/bio_icon_launcher"
-            android:contentDescription="@string/biorhythms_icon"
+            android:contentDescription="@string/app_icon"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -114,7 +114,7 @@
 
         <!-- Daily layout -->
         <LinearLayout
-            android:id="@+id/daily_layout"
+            android:id="@+id/nav_daily_layout"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginTop="50dp"
@@ -145,14 +145,14 @@
 
         <!-- Weekly layout -->
         <LinearLayout
-            android:id="@+id/weekly_layout"
+            android:id="@+id/nav_weekly_layout"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/daily_layout">
+            app:layout_constraintTop_toBottomOf="@+id/nav_daily_layout">
 
             <!-- Weekly results -->
             <Button
@@ -176,14 +176,14 @@
 
         <!-- Long term layout -->
         <LinearLayout
-            android:id="@+id/long_term_layout"
+            android:id="@+id/nav_long_term_layout"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/weekly_layout">
+            app:layout_constraintTop_toBottomOf="@+id/nav_weekly_layout">
 
             <!-- Long term results -->
             <Button

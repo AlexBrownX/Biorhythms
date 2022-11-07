@@ -1,6 +1,7 @@
-package alexbrown.x.biorhythms.utils
+package alexbrown.x.biorhythms.settings
 
 import alexbrown.x.biorhythms.R
+import alexbrown.x.biorhythms.utils.DateTimeStorage
 import android.app.Dialog
 import android.app.TimePickerDialog
 import android.os.Bundle
